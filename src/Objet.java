@@ -1,4 +1,4 @@
 public class Objet {
-    private int posP;
+    private Page posO;
     
 }

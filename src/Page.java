@@ -1,7 +1,4 @@
-
-
-
 public class Page {
-    private int numP;
+    protected int numP;
 
 }
