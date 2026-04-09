@@ -1,9 +1,9 @@
-# groupe : 21
+# Groupe : 22
 
-## composante du groupe : 
+## Composante du groupe : 
 - QUEFELEC Neven
 - MONLOUIS Gewen
 - MAUME Timothy
 - TAUZI Eliott
 
-branches : main et chaque prenom comme ecrit ci dessus
+Branches : main et chaque prénom comme écrit ci dessus
