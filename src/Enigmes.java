@@ -18,6 +18,14 @@ public class Enigmes {
         return monTexte;
     }
 
+    public int getTempRes(){
+        return this.tempResolution;
+    }
+
+    public String getTextE() {
+        return this.textE;
+    }
+
     // MIN = 1 MAX + 20 
 
 }
