@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Livre{
     private int nbpage;
-    // private static List<Enigmes> enigmes = new ArrayList<>();
+    private static List<Enigme> enigmes = new ArrayList<>();
     private Debut pDeb;
     private Fin pFin;
     private List<Page> pages;
@@ -20,7 +20,17 @@ public class Livre{
         this.pDeb = new Debut();
         this.pFin = new Fin(nbpage);
         this.pages = new ArrayList<>();
+        initEnigmes();
         fill();
+    }
+
+    private void initEnigmes(){
+        // Initialiser les énigmes disponibles
+        if(enigmes.isEmpty()){
+            for(int i = 0; i < 10; i++){
+                enigmes.add(new Enigme());
+            }
+        }
     }
 
     private Page createPage(int i){

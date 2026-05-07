@@ -2,18 +2,18 @@ package fr.iut.sae;
 
 public class Page {
     protected int numP;
-    private Enigmes enigme;
+    private Enigme enigme;
     private Objet obj;
 
     protected Page(){
     }
 
-    public Page(Enigmes enigme, int num){
+    public Page(Enigme enigme, int num){
         this.enigme = enigme;
         this.numP = num;
     }
 
-    public Page(Enigmes enigme, int num,Objet obj){
+    public Page(Enigme enigme, int num,Objet obj){
         this.obj = obj;
         this.enigme = enigme;
         this.numP = num;
@@ -23,7 +23,7 @@ public class Page {
         this.numP = num;
     }
 
-    public Enigmes getEnigme() {
+    public Enigme getEnigme() {
         return enigme;
     }
 
