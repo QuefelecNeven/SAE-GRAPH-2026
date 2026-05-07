@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Livre{
     private int nbpage;
-    private static List<Enigmes> enigmes = new ArrayList<>();
+    // private static List<Enigmes> enigmes = new ArrayList<>();
     private Debut pDeb;
     private Fin pFin;
     private List<Page> pages;
