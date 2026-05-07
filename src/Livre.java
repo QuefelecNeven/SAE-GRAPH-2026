@@ -2,12 +2,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 
 
 public class Livre{
     private int nbpage;
-    private static Map<Integer,List<Map<String,String>>> enigmes = new HashMap<>();
+    private static List<Enigmes> enigmes = new ArrayList<>();
     private Debut pDeb;
     private Fin pFin;
     private List<Page> pages;
@@ -15,18 +16,22 @@ public class Livre{
 
     public Livre(int nbpage, Debut pDeb, Fin pFin) {
         this.nbpage = nbpage;
-        this.pDeb = pDeb;
-        this.pFin = pFin;
+        this.pDeb = new Debut();
+        this.pFin = new Fin(nbpage);
         this.pages = new ArrayList<>();
+        fill();
+    }
+
+    private Page createPage(int i){
+        Random r = new Random();
+        return new Page(enigmes.get(r.nextInt(enigmes.size())),i);
     }
 
     private void fill(){
-        List<Map<String,String>> facile = new ArrayList<>();
-        List<Map<String,String>> moyen = new ArrayList<>();
-        List<Map<String,String>> dif = new ArrayList<>();
-        enigmes.put(3, facile);
-        enigmes.put(6, moyen);
-        enigmes.put(9, dif);
+        this.pages.add(pDeb);
+        for(int i = 1; i < nbpage-1; i++)
+            this.pages.add(createPage(i));
+        this.pages.add(pFin);
     }
     
     
