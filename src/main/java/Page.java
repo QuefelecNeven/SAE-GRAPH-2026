@@ -1,3 +1,5 @@
+package fr.iut.sae;
+
 public class Page {
     protected int numP;
     private Enigmes enigme;
