@@ -1,0 +1,14 @@
+"Lorem Ipsum for Java" is a simple, light-weight Java class for generating lorem
+ipsum placehoder text.
+
+Lorem ipsum text can be used to create sample data for test cases or performance
+tests in (Java) applications.
+
+"Lorem Ipsum for Java" has been developed by Sven Jacobs and is licensed under
+the MIT licence (see LICENCE).
+
+For documentation please see JavaDoc.
+
+Email:           sven.jacobs@web.de
+Project site:    http://loremipsum.sourceforge.net/
+My private site: http://sven-jacobs.de/
