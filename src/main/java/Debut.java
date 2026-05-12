@@ -1,4 +1,3 @@
-package fr.iut.sae;
 
 public class Debut extends Page{
     public Debut(){

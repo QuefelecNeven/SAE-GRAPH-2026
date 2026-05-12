@@ -1,9 +1,8 @@
-package fr.iut.sae;
 
 public class Page {
     protected int numP;
     private Enigme enigme;
-    private Objet obj;
+    private Item obj;
 
     protected Page(){
     }
@@ -13,7 +12,7 @@ public class Page {
         this.numP = num;
     }
 
-    public Page(Enigme enigme, int num,Objet obj){
+    public Page(Enigme enigme, int num,Item obj){
         this.obj = obj;
         this.enigme = new Enigme();
         this.numP = num;
@@ -31,7 +30,7 @@ public class Page {
         return numP;
     }
 
-    public Objet getObj() {
+    public Item getObj() {
         return obj;
     }
 
@@ -44,7 +43,7 @@ public class Page {
 
     public int getTempsResolution(){
         if(this.enigme == null) return 0;
-        return this.enigme.getTempsRes();
+        return this.enigme.getTempRes();
     }
 
 }

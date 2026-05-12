@@ -1,4 +1,3 @@
-package fr.iut.sae;
 
 import java.util.Random;
 import de.svenjacobs.loremipsum.LoremIpsum;
