@@ -35,4 +35,16 @@ public class Page {
         return obj;
     }
 
+    public boolean contientObjet(){
+        if(obj != null){
+            return true;
+        }
+        return false;
+    }
+
+    public int getTempsResolution(){
+        if(this.enigme == null) return 0;
+        return this.enigme.getTempsRes();
+    }
+
 }

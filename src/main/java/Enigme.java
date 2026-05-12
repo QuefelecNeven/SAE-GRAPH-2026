@@ -12,7 +12,7 @@ public class Enigme {
     // méthode d'initialisation poru que les enigmes ont un temps et une generation du lorem ipsum de maniere aléatoire.
     public Enigme() {
         this.textE = genereLorem();
-        this.tempResolution = rand.nextInt(20) + 1; 
+        this.tempResolution = rand.nextInt(1000) + 1; 
     }
 
     public String genereLorem(){
