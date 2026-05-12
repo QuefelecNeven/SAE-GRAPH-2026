@@ -9,13 +9,13 @@ public class Page {
     }
 
     public Page(Enigme enigme, int num){
-        this.enigme = enigme;
+        this.enigme = new  Enigme();
         this.numP = num;
     }
 
     public Page(Enigme enigme, int num,Objet obj){
         this.obj = obj;
-        this.enigme = enigme;
+        this.enigme = new Enigme();
         this.numP = num;
     }
 

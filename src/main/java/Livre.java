@@ -85,9 +85,8 @@ public class Livre{
 
         Random random = new Random();
         List<Page> toutesPages = new ArrayList<>(pages);
-        toutesPages.add(0, pageDebut);
-        toutesPages.add(pageSortie);
-
+        toutesPages.add(0, pDeb);
+        toutesPages.add(pFin);
         for (Page page : toutesPages) {
             g.addVertex(page);
         }
@@ -110,8 +109,8 @@ public class Livre{
         }
 
         for (Page page : toutesPages) {
-            if (!estAtteignable(g, pageDebut, page)) {
-                Page source = trouverPageAtteignable(g, pageDebut, toutesPages, random);
+            if (!estAtteignable(g, pDeb, page)) {
+                Page source = trouverPageAtteignable(g, pDeb, toutesPages, random);
                 DefaultWeightedEdge arc = g.addEdge(source, page);
                 g.setEdgeWeight(arc, page.getTempsResolution());
             }
@@ -126,8 +125,7 @@ public class Livre{
 
         return g;
     }
-
-    
+  
     private void initEnigmes(){
         if(enigmes.isEmpty()){
             for(int i = 0; i < 10; i++){
@@ -142,14 +140,15 @@ public class Livre{
     }
 
     private void fill(){
-    initEnigmes();
-    this.pages.add(pDeb);
-    for(int i = 1; i < nbpage-1; i++)
-        this.pages.add(createPage(i));
-    this.pages.add(pFin);
-}
-    
-    
-    
-    
+        initEnigmes();
+        this.pages.add(pDeb);
+        for(int i = 1; i < nbpage-1; i++)
+            this.pages.add(createPage(i));
+        this.pages.add(pFin);
+    }
+
+    private void initObject(Objet obj, ) {
+        this.obj = obj;
+    }
+
 }
