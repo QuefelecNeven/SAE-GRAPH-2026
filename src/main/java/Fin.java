@@ -1,4 +1,3 @@
-package fr.iut.sae;
 
 public class Fin extends Page{
     public Fin(int nb){

@@ -1,7 +1,7 @@
-package fr.iut.sae;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -22,15 +22,24 @@ public class Livre{
     private Fin pFin;
     private List<Page> pages;
     private Graph<Page, DefaultWeightedEdge> graphe;
+    private Set<Item> items;
 
 
-    public Livre(int nbpage, Debut pDeb, Fin pFin) {
+    public Livre(int nbpage, Debut pDeb, Fin pFin,List<Integer> l) {
         this.nbpage = nbpage;
         this.pDeb = new Debut();
         this.pFin = new Fin(nbpage);
         this.pages = new ArrayList<>();
+        items = poserObj(l);
         fill(); 
         this.graphe = initialiserGrapheAleatoire();
+    }
+
+    private Set<Item> poserObj(List<Integer> l){
+        Set<Item> it = new HashSet<>();
+        for (int i = 0; i<l.size();i++){
+            it.add(new Item(i));
+        }
     }
 
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheSimple() {
@@ -147,8 +156,5 @@ public class Livre{
         this.pages.add(pFin);
     }
 
-    private void initObject(Objet obj, ) {
-        this.obj = obj;
-    }
 
 }
