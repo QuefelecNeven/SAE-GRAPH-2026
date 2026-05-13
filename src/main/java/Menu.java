@@ -29,17 +29,19 @@ public class Menu {
     // ------------------------------------------------------------------
 
     public void afficherMenuPrincipal() {
+        choisirTypeGraphe();
         int choix = -1;
-        while (choix != 4) {
+        while (choix != 5) {
             System.out.println("\n=== MENU PRINCIPAL ===");
             System.out.println("  1. Jouer (Mode Humain)");
             System.out.println("  2. Jouer (Mode Algorithme)");
-            System.out.println("  3. Exporter le graphe en .dot");
-            System.out.println("  4. Quitter");
+            System.out.println("  3. Exporter le graphe en .dot / PDF");
+            System.out.println("  4. Changer le type de graphe");
+            System.out.println("  5. Quitter");
             System.out.print("Votre choix : ");
 
             choix = -1;
-            while (choix < 1 || choix > 4) {
+            while (choix < 1 || choix > 5) {
                 if (scanner.hasNextInt()) {
                     choix = scanner.nextInt();
                 } else {
@@ -50,9 +52,34 @@ public class Menu {
             switch (choix) {
                 case 1 -> jouerHumain();
                 case 2 -> jouerIA();
-                case 3 -> exporterGraphe(); // retour au menu après export
-                case 4 -> System.out.println("Au revoir !");
+                case 3 -> exporterGraphe();
+                case 4 -> choisirTypeGraphe();
+                case 5 -> System.out.println("Au revoir !");
             }
+        }
+    }
+
+    private void choisirTypeGraphe() {
+        System.out.println("\n=== TYPE DE GRAPHE ===");
+        System.out.println("  1. Graphe Simple (chemin garanti passant par les objets)");
+        System.out.println("  2. Graphe Aléatoire (avec garantie d'atteignabilité)");
+        System.out.print("Votre choix : ");
+
+        int choix = -1;
+        while (choix < 1 || choix > 2) {
+            if (scanner.hasNextInt()) {
+                choix = scanner.nextInt();
+            } else {
+                scanner.next();
+            }
+        }
+
+        if (choix == 1) {
+            livre.utiliserGrapheSimple();
+            System.out.println("Graphe Simple sélectionné.");
+        } else {
+            livre.utiliserGrapheAleatoire();
+            System.out.println("Graphe Aléatoire sélectionné.");
         }
     }
 
@@ -142,10 +169,29 @@ public class Menu {
         try (FileWriter writer = new FileWriter(nomFichier)) {
             exporter.exportGraph(livre.getGraphe(), writer);
             System.out.println("Graphe exporté dans : " + nomFichier);
-            System.out.println("Pour générer le PDF, lancez :");
-            System.out.println("  dot -T pdf " + nomFichier + " -o graph.pdf");
         } catch (IOException e) {
             System.out.println("Erreur lors de l'export : " + e.getMessage());
+            return;
+        }
+
+        // Génération automatique du PDF via la commande dot
+        try {
+            Process process = new ProcessBuilder("dot", "-T", "pdf", nomFichier, "-o", "graph.pdf")
+                .inheritIO()
+                .start();
+            int code = process.waitFor();
+            if (code == 0) {
+                System.out.println("PDF généré : graph.pdf");
+            } else {
+                System.out.println("Erreur lors de la génération du PDF (code " + code + ").");
+                System.out.println("Vérifiez que graphviz est installé : sudo apt install graphviz");
+            }
+        } catch (IOException e) {
+            System.out.println("Impossible de lancer 'dot' : " + e.getMessage());
+            System.out.println("Installez graphviz : sudo apt install graphviz");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.out.println("Génération interrompue.");
         }
         // On ne quitte pas : retour automatique au menu principal
     }

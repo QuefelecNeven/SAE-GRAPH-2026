@@ -1,18 +1,17 @@
-
 public class Page {
     protected int numP;
     private Enigme enigme;
-    private Item obj = null;
+    private Item obj;
 
     protected Page(){
     }
 
     public Page(Enigme enigme, int num){
-        this.enigme = new  Enigme();
+        this.enigme = new Enigme();
         this.numP = num;
     }
 
-    public Page(Enigme enigme, int num,Item obj){
+    public Page(Enigme enigme, int num, Item obj){
         this.obj = obj;
         this.enigme = new Enigme();
         this.numP = num;
@@ -34,20 +33,16 @@ public class Page {
         return obj;
     }
 
-    public boolean contientObjet(){
-        if(obj != null){
-            return true;
-        }
-        return false;
+    public void setObj(Item obj) {
+        this.obj = obj;
     }
 
-    public void addobj(Item i){
-        this.obj = i;
+    public boolean contientObjet(){
+        return obj != null;
     }
 
     public int getTempsResolution(){
         if(this.enigme == null) return 0;
         return this.enigme.getTempRes();
     }
-
 }

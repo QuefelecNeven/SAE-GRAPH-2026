@@ -32,6 +32,7 @@
             ncurses
             patchelf
             zlib
+            graphviz
           ];
         };
       });

@@ -17,7 +17,7 @@ public class Item {
         return nom;
     }
 
-    public Page getPosO() {
+    public int getPosO() {
         return posO;
     }
 }

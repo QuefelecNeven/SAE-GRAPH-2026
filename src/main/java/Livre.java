@@ -18,16 +18,27 @@ public class Livre {
     private Graph<Page, DefaultWeightedEdge> graphe;
     private Set<Item> items;
 
-
-    public Livre(int nbpage, Debut pDeb, Fin pFin,List<Integer> l) {
+    public Livre(int nbpage, List<Integer> l) {
         this.nbpage = nbpage;
-        this.pDeb = new Debut(pDeb);
-        this.pFin = new Fin(pFin);
+        this.pDeb = new Debut(0);
+        this.pFin = new Fin(nbpage);
         this.pages = new ArrayList<>();
-        items = poserObj(l);
-        fill(); 
+        this.items = poserObj(l);
+        fill();
+        this.graphe = initialiserGrapheAleatoire(); // par défaut
+    }
+
+    public void utiliserGrapheSimple() {
+        this.graphe = initialiserGrapheSimple();
+    }
+
+    public void utiliserGrapheAleatoire() {
         this.graphe = initialiserGrapheAleatoire();
     }
+
+    // ------------------------------------------------------------------
+    // Accesseurs
+    // ------------------------------------------------------------------
 
     public Page getDebut() {
         return pDeb;
@@ -49,13 +60,21 @@ public class Livre {
         return graphe;
     }
 
+    // ------------------------------------------------------------------
+    // Construction des items
+    // ------------------------------------------------------------------
 
     private Set<Item> poserObj(List<Integer> l) {
         Set<Item> it = new HashSet<>();
         for (int i = 0; i < l.size(); i++) {
             it.add(new Item(l.get(i)));
         }
+        return it; // return manquant dans l'original
     }
+
+    // ------------------------------------------------------------------
+    // Graphe simple (chemin garanti passant par les pages avec objets)
+    // ------------------------------------------------------------------
 
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheSimple() {
         Graph<Page, DefaultWeightedEdge> g =
@@ -71,6 +90,8 @@ public class Livre {
                 pageAvecObjet.add(page);
             }
         }
+
+        // Chemin principal : pDeb → pages avec objets → pFin
         Page anciennePage = pDeb;
         for (Page pageObjet : pageAvecObjet) {
             DefaultWeightedEdge arc = g.addEdge(anciennePage, pageObjet);
@@ -79,6 +100,8 @@ public class Livre {
         }
         DefaultWeightedEdge arcFinal = g.addEdge(anciennePage, pFin);
         g.setEdgeWeight(arcFinal, pFin.getTempsResolution());
+
+        // Arcs aléatoires supplémentaires (2 à 3 par sommet)
         List<Page> toutesPages = new ArrayList<>(pages);
         toutesPages.add(pDeb);
         toutesPages.add(pFin);
@@ -103,6 +126,10 @@ public class Livre {
         return g;
     }
 
+    // ------------------------------------------------------------------
+    // Graphe aléatoire (avec garantie d'atteignabilité)
+    // ------------------------------------------------------------------
+
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheAleatoire() {
         Graph<Page, DefaultWeightedEdge> g =
                 new DefaultDirectedWeightedGraph<>(DefaultWeightedEdge.class);
@@ -115,6 +142,8 @@ public class Livre {
         for (Page page : toutesPages) {
             g.addVertex(page);
         }
+
+        // Arcs aléatoires (2 à 3 par sommet)
         for (Page page : toutesPages) {
             int nbArcs = 2 + random.nextInt(2);
             List<Page> cibles = new ArrayList<>(toutesPages);
@@ -131,6 +160,8 @@ public class Livre {
                 }
             }
         }
+
+        // Garantir que chaque page est atteignable depuis pDeb
         for (Page page : toutesPages) {
             if (!estAtteignable(g, pDeb, page)) {
                 Page source = trouverPageAtteignable(g, pDeb, toutesPages, random);
@@ -138,6 +169,8 @@ public class Livre {
                 g.setEdgeWeight(arc, page.getTempsResolution());
             }
         }
+
+        // Garantir que pFin est atteignable depuis chaque page
         for (Page page : toutesPages) {
             if (!estAtteignable(g, page, pFin)) {
                 DefaultWeightedEdge arc = g.addEdge(page, pFin);
@@ -147,6 +180,10 @@ public class Livre {
 
         return g;
     }
+
+    // ------------------------------------------------------------------
+    // Utilitaires graphe
+    // ------------------------------------------------------------------
 
     private boolean estAtteignable(Graph<Page, DefaultWeightedEdge> g, Page source, Page cible) {
         if (source.equals(cible)) return true;
@@ -176,6 +213,10 @@ public class Livre {
         return atteignables.get(random.nextInt(atteignables.size()));
     }
 
+    // ------------------------------------------------------------------
+    // Initialisation des pages
+    // ------------------------------------------------------------------
+
     private void initEnigmes() {
         if (enigmes.isEmpty()) {
             for (int i = 0; i < 10; i++) {
@@ -192,8 +233,19 @@ public class Livre {
     private void fill() {
         initEnigmes();
         this.pages.add(pDeb);
-        for(int i = 1; i < nbpage-1; i++)
+        for (int i = 1; i < nbpage - 1; i++) {
             this.pages.add(createPage(i));
+        }
         this.pages.add(pFin);
+
+        // Assigner chaque item à la page correspondante
+        for (Item item : items) {
+            for (Page page : pages) {
+                if (page.getNumP() == item.getPosO()) {
+                    page.setObj(item);
+                    break;
+                }
+            }
+        }
     }
 }
