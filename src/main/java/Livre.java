@@ -19,6 +19,7 @@ public class Livre {
     private Set<Item> items;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public Livre(int nbpage, List<Integer> l) {
         this.nbpage = nbpage;
         this.pDeb = new Debut(0);
@@ -35,18 +36,45 @@ public class Livre {
 
     public void utiliserGrapheAleatoire() {
 =======
+=======
+>>>>>>> d2714cb (Fin)
 
     public Livre(int nbpage, int pDeb, int pFin,List<Integer> l) {
+=======
+    public Livre(int nbpage, List<Integer> l) {
+>>>>>>> 556f834 (Fin)
         this.nbpage = nbpage;
-        this.pDeb = new Debut(pDeb);
-        this.pFin = new Fin(pFin);
+        this.pDeb = new Debut(0);
+        this.pFin = new Fin(nbpage);
         this.pages = new ArrayList<>();
+<<<<<<< HEAD
         fill(); 
         items = poserObj(l);
+<<<<<<< HEAD
 >>>>>>> 56cd319 (poser objet fait et fill modifié)
         this.graphe = initialiserGrapheAleatoire();
     }
 
+=======
+=======
+        this.items = poserObj(l);
+        fill();
+        this.graphe = initialiserGrapheAleatoire(); // par défaut
+    }
+
+    public void utiliserGrapheSimple() {
+        this.graphe = initialiserGrapheSimple();
+    }
+
+    public void utiliserGrapheAleatoire() {
+>>>>>>> 556f834 (Fin)
+        this.graphe = initialiserGrapheAleatoire();
+    }
+
+    // ------------------------------------------------------------------
+    // Accesseurs
+    // ------------------------------------------------------------------
+>>>>>>> d2714cb (Fin)
 
     public Page getDebut() {
         return pDeb;
@@ -61,11 +89,35 @@ public class Livre {
         for (DefaultWeightedEdge arc : graphe.outgoingEdgesOf(p)) {
             suivantes.add(graphe.getEdgeTarget(arc));
         }
+<<<<<<< HEAD
         for(Item obj : items){
             this.pages.get(obj.getPosO()).addobj(obj);
         }
         return it;
+=======
+        return suivantes;
     }
+
+    public Graph<Page, DefaultWeightedEdge> getGraphe() {
+        return graphe;
+    }
+
+    // ------------------------------------------------------------------
+    // Construction des items
+    // ------------------------------------------------------------------
+
+    private Set<Item> poserObj(List<Integer> l) {
+        Set<Item> it = new HashSet<>();
+        for (int i = 0; i < l.size(); i++) {
+            it.add(new Item(l.get(i)));
+        }
+        return it; // return manquant dans l'original
+>>>>>>> 556f834 (Fin)
+    }
+
+    // ------------------------------------------------------------------
+    // Graphe simple (chemin garanti passant par les pages avec objets)
+    // ------------------------------------------------------------------
 
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheSimple() {
         Graph<Page, DefaultWeightedEdge> g =
@@ -82,6 +134,10 @@ public class Livre {
             }
         }
 
+<<<<<<< HEAD
+=======
+        // Chemin principal : pDeb → pages avec objets → pFin
+>>>>>>> d2714cb (Fin)
         Page anciennePage = pDeb;
         for (Page pageObjet : pageAvecObjet) {
             DefaultWeightedEdge arc = g.addEdge(anciennePage, pageObjet);
@@ -91,6 +147,10 @@ public class Livre {
         DefaultWeightedEdge arcFinal = g.addEdge(anciennePage, pFin);
         g.setEdgeWeight(arcFinal, pFin.getTempsResolution());
 
+<<<<<<< HEAD
+=======
+        // Arcs aléatoires supplémentaires (2 à 3 par sommet)
+>>>>>>> d2714cb (Fin)
         List<Page> toutesPages = new ArrayList<>(pages);
         toutesPages.add(pDeb);
         toutesPages.add(pFin);
@@ -115,6 +175,10 @@ public class Livre {
         return g;
     }
 
+    // ------------------------------------------------------------------
+    // Graphe aléatoire (avec garantie d'atteignabilité)
+    // ------------------------------------------------------------------
+
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheAleatoire() {
         Graph<Page, DefaultWeightedEdge> g =
                 new DefaultDirectedWeightedGraph<>(DefaultWeightedEdge.class);
@@ -128,7 +192,11 @@ public class Livre {
             g.addVertex(page);
         }
 
+<<<<<<< HEAD
         //ajoute les liaison random
+=======
+        // Arcs aléatoires (2 à 3 par sommet)
+>>>>>>> d2714cb (Fin)
         for (Page page : toutesPages) {
             int nbArcs = 2 + random.nextInt(2);
             List<Page> cibles = new ArrayList<>(toutesPages);
@@ -145,7 +213,12 @@ public class Livre {
                 }
             }
         }
+<<<<<<< HEAD
         //verif toujours connexe
+=======
+
+        // Garantir que chaque page est atteignable depuis pDeb
+>>>>>>> d2714cb (Fin)
         for (Page page : toutesPages) {
             if (!estAtteignable(g, pDeb, page)) {
                 Page source = trouverPageAtteignable(g, pDeb, toutesPages, random);
@@ -154,7 +227,11 @@ public class Livre {
             }
         }
 
+<<<<<<< HEAD
         //verif que la fin est atteignable
+=======
+        // Garantir que pFin est atteignable depuis chaque page
+>>>>>>> d2714cb (Fin)
         for (Page page : toutesPages) {
             if (!estAtteignable(g, page, pFin)) {
                 DefaultWeightedEdge arc = g.addEdge(page, pFin);
@@ -164,7 +241,15 @@ public class Livre {
 
         return g;
     }
+<<<<<<< HEAD
     // permet de savoir si il existe un chemin depuis le sommet source au sommets cible donné en parametre sur un graph donné lui aussi
+=======
+
+    // ------------------------------------------------------------------
+    // Utilitaires graphe
+    // ------------------------------------------------------------------
+
+>>>>>>> d2714cb (Fin)
     private boolean estAtteignable(Graph<Page, DefaultWeightedEdge> g, Page source, Page cible) {
         if (source.equals(cible)) return true;
         Set<Page> visites = new HashSet<>();
@@ -193,6 +278,12 @@ public class Livre {
         return atteignables.get(random.nextInt(atteignables.size()));
     }
 
+<<<<<<< HEAD
+=======
+    // ------------------------------------------------------------------
+    // Initialisation des pages
+    // ------------------------------------------------------------------
+>>>>>>> d2714cb (Fin)
 
     private void initEnigmes() {
         if (enigmes.isEmpty()) {
@@ -209,12 +300,24 @@ public class Livre {
 
     private void remplirLesPages() {
         initEnigmes();
+<<<<<<< HEAD
         for(int i = 1; i < nbpage-1; i++)
             this.pages.add(createPage(i));
+<<<<<<< HEAD
 <<<<<<< HEAD
         }
         this.pages.add(pFin);
 
+=======
+=======
+        this.pages.add(pDeb);
+        for (int i = 1; i < nbpage - 1; i++) {
+            this.pages.add(createPage(i));
+        }
+        this.pages.add(pFin);
+
+        // Assigner chaque item à la page correspondante
+>>>>>>> d2714cb (Fin)
         for (Item item : items) {
             for (Page page : pages) {
                 if (page.getNumP() == item.getPosO()) {
@@ -223,8 +326,12 @@ public class Livre {
                 }
             }
         }
+<<<<<<< HEAD
 =======
 >>>>>>> 56cd319 (poser objet fait et fill modifié)
+=======
+>>>>>>> 556f834 (Fin)
+>>>>>>> d2714cb (Fin)
     }
     
     

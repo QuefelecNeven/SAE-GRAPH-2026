@@ -24,6 +24,7 @@ public class Menu {
     }
 
     public void afficherMenuPrincipal() {
+<<<<<<< HEAD
         System.out.println("\n INITIALISATION DE L'AVENTURE ");
         System.out.println("  1. Créer une nouvelle partie (Nouveau graphe)");
         System.out.println("  2. Charger un fichier de sauvegarde");
@@ -52,10 +53,17 @@ public class Menu {
         int choix = -1;
         while (choix != 7) {
             System.out.println("\n MENU PRINCIPAL ");
+=======
+        choisirTypeGraphe();
+        int choix = -1;
+        while (choix != 5) {
+            System.out.println("\n=== MENU PRINCIPAL ===");
+>>>>>>> d2714cb (Fin)
             System.out.println("  1. Jouer (Mode Humain)");
             System.out.println("  2. Jouer (Mode Algorithme)");
             System.out.println("  3. Exporter le graphe en .dot / PDF");
             System.out.println("  4. Changer le type de graphe");
+<<<<<<< HEAD
             System.out.println("  5. Sauvegarder la partie");
             System.out.println("  6. Charger une sauvegarde");
             System.out.println("  7. Quitter");
@@ -67,6 +75,17 @@ public class Menu {
                 try {
                     choix = Integer.parseInt(entree);
                 } catch (NumberFormatException e) {
+=======
+            System.out.println("  5. Quitter");
+            System.out.print("Votre choix : ");
+
+            choix = -1;
+            while (choix < 1 || choix > 5) {
+                if (scanner.hasNextInt()) {
+                    choix = scanner.nextInt();
+                } else {
+                    scanner.next();
+>>>>>>> d2714cb (Fin)
                 }
             }
 
@@ -75,13 +94,18 @@ public class Menu {
                 case 2 -> jouerIA();
                 case 3 -> exporterGraphe();
                 case 4 -> choisirTypeGraphe();
+<<<<<<< HEAD
                 case 5 -> sauvegarderPartieDossier();
                 case 6 -> chargerPartieDossier();
                 case 7 -> System.out.println("Au revoir !");
+=======
+                case 5 -> System.out.println("Au revoir !");
+>>>>>>> d2714cb (Fin)
             }
         }
     }
 
+<<<<<<< HEAD
     private void creerNouvellePartie() {
         System.out.println("\n CONFIGURATION DU LIVRE ");
         System.out.print("Nombre de pages du livre (minimum 5) : ");
@@ -152,20 +176,32 @@ public class Menu {
 
     private void choisirTypeGraphe() {
         System.out.println("\n TYPE DE GRAPHE");
+=======
+    private void choisirTypeGraphe() {
+        System.out.println("\n=== TYPE DE GRAPHE ===");
+>>>>>>> d2714cb (Fin)
         System.out.println("  1. Graphe Simple (chemin garanti passant par les objets)");
         System.out.println("  2. Graphe Aléatoire (avec garantie d'atteignabilité)");
         System.out.print("Votre choix : ");
 
         int choix = -1;
         while (choix < 1 || choix > 2) {
+<<<<<<< HEAD
             String entree = scanner.next();
             try {
                 choix = Integer.parseInt(entree);
             } catch (NumberFormatException e) {
+=======
+            if (scanner.hasNextInt()) {
+                choix = scanner.nextInt();
+            } else {
+                scanner.next();
+>>>>>>> d2714cb (Fin)
             }
         }
 
         if (choix == 1) {
+<<<<<<< HEAD
             long debut = System.nanoTime();
             livre.utiliserGrapheSimple();
             long fin = System.nanoTime();
@@ -179,6 +215,19 @@ public class Menu {
             System.out.println("Durée de création du graphe : " + (fin - debut) / 1_000_000.0 + " ms");
         }
     }
+=======
+            livre.utiliserGrapheSimple();
+            System.out.println("Graphe Simple sélectionné.");
+        } else {
+            livre.utiliserGrapheAleatoire();
+            System.out.println("Graphe Aléatoire sélectionné.");
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // Mode humain
+    // ------------------------------------------------------------------
+>>>>>>> d2714cb (Fin)
 
     public void jouerHumain() {
         System.out.println("\n DÉBUT DE L'AVENTURE (Mode Humain)");
@@ -365,6 +414,29 @@ public class Menu {
         } catch (IOException e) {
             System.out.println("Erreur lors de l'export : " + e.getMessage());
             return;
+<<<<<<< HEAD
+=======
+        }
+
+        // Génération automatique du PDF via la commande dot
+        try {
+            Process process = new ProcessBuilder("dot", "-T", "pdf", nomFichier, "-o", "graph.pdf")
+                .inheritIO()
+                .start();
+            int code = process.waitFor();
+            if (code == 0) {
+                System.out.println("PDF généré : graph.pdf");
+            } else {
+                System.out.println("Erreur lors de la génération du PDF (code " + code + ").");
+                System.out.println("Vérifiez que graphviz est installé : sudo apt install graphviz");
+            }
+        } catch (IOException e) {
+            System.out.println("Impossible de lancer 'dot' : " + e.getMessage());
+            System.out.println("Installez graphviz : sudo apt install graphviz");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.out.println("Génération interrompue.");
+>>>>>>> d2714cb (Fin)
         }
 
         try {

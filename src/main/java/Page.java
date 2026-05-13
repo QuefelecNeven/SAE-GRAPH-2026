@@ -1,7 +1,7 @@
 public class Page {
     protected int numP;
     private Enigme enigme;
-    private Item obj = null;
+    private Item obj;
 
     protected Page(){
     }
@@ -35,22 +35,28 @@ public class Page {
 
     public void setObj(Item obj) {
         this.obj = obj;
+<<<<<<< HEAD
+    }
+
+    public boolean contientObjet(){
+        return obj != null;
+=======
+>>>>>>> d2714cb (Fin)
     }
 
     public boolean contientObjet(){
         return obj != null;
     }
 
-    public void addobj(Item i){
-        this.obj = i;
-    }
-
     public int getTempsResolution(){
         if(this.enigme == null) return 0;
         return this.enigme.getTempRes();
     }
+<<<<<<< HEAD
     
     public void setEnigme(Enigme enigme) {
         this.enigme = enigme;
     }
+=======
+>>>>>>> d2714cb (Fin)
 }
