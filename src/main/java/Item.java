@@ -17,8 +17,7 @@ public class Item {
         return nom;
     }
 
-    // Retourne le numéro de page (int) et non un objet Page
-    public int getPosO() {
+    public Page getPosO() {
         return posO;
     }
 }
