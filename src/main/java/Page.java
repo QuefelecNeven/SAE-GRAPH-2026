@@ -1,7 +1,7 @@
 public class Page {
     protected int numP;
     private Enigme enigme;
-    private Item obj;
+    private Item obj = null;
 
     protected Page(){
     }
@@ -39,6 +39,10 @@ public class Page {
 
     public boolean contientObjet(){
         return obj != null;
+    }
+
+    public void addobj(Item i){
+        this.obj = i;
     }
 
     public int getTempsResolution(){

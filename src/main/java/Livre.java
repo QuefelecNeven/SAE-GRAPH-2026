@@ -18,6 +18,7 @@ public class Livre {
     private Graph<Page, DefaultWeightedEdge> graphe;
     private Set<Item> items;
 
+<<<<<<< HEAD
     public Livre(int nbpage, List<Integer> l) {
         this.nbpage = nbpage;
         this.pDeb = new Debut(0);
@@ -33,6 +34,16 @@ public class Livre {
     }
 
     public void utiliserGrapheAleatoire() {
+=======
+
+    public Livre(int nbpage, int pDeb, int pFin,List<Integer> l) {
+        this.nbpage = nbpage;
+        this.pDeb = new Debut(pDeb);
+        this.pFin = new Fin(pFin);
+        this.pages = new ArrayList<>();
+        fill(); 
+        items = poserObj(l);
+>>>>>>> 56cd319 (poser objet fait et fill modifié)
         this.graphe = initialiserGrapheAleatoire();
     }
 
@@ -50,20 +61,10 @@ public class Livre {
         for (DefaultWeightedEdge arc : graphe.outgoingEdgesOf(p)) {
             suivantes.add(graphe.getEdgeTarget(arc));
         }
-        return suivantes;
-    }
-
-    public Graph<Page, DefaultWeightedEdge> getGraphe() {
-        return graphe;
-    }
-
-
-    private Set<Item> poserObj(List<Integer> l) {
-        Set<Item> it = new HashSet<>();
-        for (int i = 0; i < l.size(); i++) {
-            it.add(new Item(l.get(i)));
+        for(Item obj : items){
+            this.pages.get(obj.getPosO()).addobj(obj);
         }
-        return it; 
+        return it;
     }
 
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheSimple() {
@@ -208,9 +209,9 @@ public class Livre {
 
     private void remplirLesPages() {
         initEnigmes();
-        this.pages.add(pDeb);
-        for (int i = 1; i < nbpage - 1; i++) {
+        for(int i = 1; i < nbpage-1; i++)
             this.pages.add(createPage(i));
+<<<<<<< HEAD
         }
         this.pages.add(pFin);
 
@@ -222,6 +223,8 @@ public class Livre {
                 }
             }
         }
+=======
+>>>>>>> 56cd319 (poser objet fait et fill modifié)
     }
     
     
