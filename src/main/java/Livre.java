@@ -1,21 +1,15 @@
-
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.SimpleGraph;
-import org.jgrapht.Graph;
-import org.jgrapht.Graphs;
 import java.util.Set;
+
+import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultDirectedWeightedGraph;
 import org.jgrapht.graph.DefaultWeightedEdge;
-import java.util.Collections;
 
-
-public class Livre{
+public class Livre {
     private int nbpage;
     private static List<Enigme> enigmes = new ArrayList<>();
     private Debut pDeb;
@@ -24,28 +18,49 @@ public class Livre{
     private Graph<Page, DefaultWeightedEdge> graphe;
     private Set<Item> items;
 
-
-    public Livre(int nbpage, Debut pDeb, Fin pFin,List<Integer> l) {
+    public Livre(int nbpage, Debut pDeb, Fin pFin, List<Integer> l) {
         this.nbpage = nbpage;
         this.pDeb = new Debut();
         this.pFin = new Fin(nbpage);
         this.pages = new ArrayList<>();
-        items = poserObj(l);
-        fill(); 
+        this.items = poserObj(l);
+        fill();
         this.graphe = initialiserGrapheAleatoire();
     }
 
-    private Set<Item> poserObj(List<Integer> l){
-        Set<Item> it = new HashSet<>();
-        for (int i = 0; i<l.size();i++){
-            it.add(new Item(i));
+    public Page getDebut() {
+        return pDeb;
+    }
+
+    public Page getFin() {
+        return pFin;
+    }
+
+    public List<Page> getPagesSuivantes(Page p) {
+        List<Page> suivantes = new ArrayList<>();
+        for (DefaultWeightedEdge arc : graphe.outgoingEdgesOf(p)) {
+            suivantes.add(graphe.getEdgeTarget(arc));
         }
+        return suivantes;
+    }
+
+    public Graph<Page, DefaultWeightedEdge> getGraphe() {
+        return graphe;
+    }
+
+
+    private Set<Item> poserObj(List<Integer> l) {
+        Set<Item> it = new HashSet<>();
+        for (int i = 0; i < l.size(); i++) {
+            it.add(new Item(l.get(i)));
+        }
+        return it; 
     }
 
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheSimple() {
-        Graph<Page, DefaultWeightedEdge> g = 
-            new DefaultDirectedWeightedGraph<>(DefaultWeightedEdge.class);
-        
+        Graph<Page, DefaultWeightedEdge> g =
+                new DefaultDirectedWeightedGraph<>(DefaultWeightedEdge.class);
+
         Random random = new Random();
         List<Page> pageAvecObjet = new ArrayList<>();
         g.addVertex(pDeb);
@@ -89,17 +104,17 @@ public class Livre{
     }
 
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheAleatoire() {
-        Graph<Page, DefaultWeightedEdge> g = 
-            new DefaultDirectedWeightedGraph<>(DefaultWeightedEdge.class);
+        Graph<Page, DefaultWeightedEdge> g =
+                new DefaultDirectedWeightedGraph<>(DefaultWeightedEdge.class);
 
         Random random = new Random();
         List<Page> toutesPages = new ArrayList<>(pages);
         toutesPages.add(0, pDeb);
         toutesPages.add(pFin);
+
         for (Page page : toutesPages) {
             g.addVertex(page);
         }
-
         for (Page page : toutesPages) {
             int nbArcs = 2 + random.nextInt(2);
             List<Page> cibles = new ArrayList<>(toutesPages);
@@ -116,7 +131,6 @@ public class Livre{
                 }
             }
         }
-
         for (Page page : toutesPages) {
             if (!estAtteignable(g, pDeb, page)) {
                 Page source = trouverPageAtteignable(g, pDeb, toutesPages, random);
@@ -124,37 +138,63 @@ public class Livre{
                 g.setEdgeWeight(arc, page.getTempsResolution());
             }
         }
-
         for (Page page : toutesPages) {
-            if (!estAtteignable(g, page, pageSortie)) {
-                DefaultWeightedEdge arc = g.addEdge(page, pageSortie);
-                g.setEdgeWeight(arc, pageSortie.getTempsResolution());
+            if (!estAtteignable(g, page, pFin)) {
+                DefaultWeightedEdge arc = g.addEdge(page, pFin);
+                g.setEdgeWeight(arc, pFin.getTempsResolution());
             }
         }
 
         return g;
     }
-  
-    private void initEnigmes(){
-        if(enigmes.isEmpty()){
-            for(int i = 0; i < 10; i++){
+
+    private boolean estAtteignable(Graph<Page, DefaultWeightedEdge> g, Page source, Page cible) {
+        if (source.equals(cible)) return true;
+        Set<Page> visites = new HashSet<>();
+        List<Page> file = new ArrayList<>();
+        file.add(source);
+        while (!file.isEmpty()) {
+            Page courant = file.remove(0);
+            if (courant.equals(cible)) return true;
+            if (visites.contains(courant)) continue;
+            visites.add(courant);
+            for (DefaultWeightedEdge arc : g.outgoingEdgesOf(courant)) {
+                file.add(g.getEdgeTarget(arc));
+            }
+        }
+        return false;
+    }
+
+    private Page trouverPageAtteignable(Graph<Page, DefaultWeightedEdge> g, Page pDeb,
+                                        List<Page> toutesPages, Random random) {
+        List<Page> atteignables = new ArrayList<>();
+        for (Page p : toutesPages) {
+            if (estAtteignable(g, pDeb, p)) {
+                atteignables.add(p);
+            }
+        }
+        return atteignables.get(random.nextInt(atteignables.size()));
+    }
+
+    private void initEnigmes() {
+        if (enigmes.isEmpty()) {
+            for (int i = 0; i < 10; i++) {
                 enigmes.add(new Enigme());
             }
         }
     }
 
-    private Page createPage(int i){
+    private Page createPage(int i) {
         Random r = new Random();
-        return new Page(enigmes.get(r.nextInt(enigmes.size())),i);
+        return new Page(enigmes.get(r.nextInt(enigmes.size())), i);
     }
 
-    private void fill(){
+    private void fill() {
         initEnigmes();
         this.pages.add(pDeb);
-        for(int i = 1; i < nbpage-1; i++)
+        for (int i = 1; i < nbpage - 1; i++) {
             this.pages.add(createPage(i));
+        }
         this.pages.add(pFin);
     }
-
-
 }

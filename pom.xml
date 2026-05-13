@@ -1,12 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>fr.iut.sae</groupId>
   <artifactId>sae-graph-2026</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
-
   <name>SAE GRAPH 2026</name>
   <description>Projet de gestion de livres interactifs avec énigmes</description>
 
@@ -17,36 +15,40 @@
   </properties>
 
   <dependencies>
-    <!-- LoremIpsum local JAR -->
+    <!-- loremipsum installé localement via mvn install:install-file -->
     <dependency>
       <groupId>de.sven-jacobs</groupId>
       <artifactId>loremipsum</artifactId>
       <version>1.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/L0rem IpsUm/loremipsum-1.0.jar</systemPath>
     </dependency>
 
-    <!-- JUnit pour les tests -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <version>5.10.2</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- JGraphT : bibliothèque algorithmique de graphes -->
+    <dependency>
+      <groupId>org.jgrapht</groupId>
+      <artifactId>jgrapht-core</artifactId>
+      <version>1.5.2</version>
+    </dependency>
+
+    <!-- JGraphT IO : contient DOTExporter -->
+    <dependency>
+      <groupId>org.jgrapht</groupId>
+      <artifactId>jgrapht-io</artifactId>
+      <version>1.5.2</version>
+    </dependency>
   </dependencies>
-  <dependency>
-    <groupId>com.mxgraph</groupId>
-    <artifactId>jgraphx</artifactId>
-    <version>4.2.2</version>
-  </dependency>
 
   <build>
     <directory>${project.basedir}/target</directory>
     <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
     <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
-
     <plugins>
-      <!-- Maven Compiler Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -57,8 +59,6 @@
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
-
-      <!-- Maven Surefire Plugin pour les tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -67,8 +67,6 @@
           <useModulePath>false</useModulePath>
         </configuration>
       </plugin>
-
-      <!-- Maven Assembly Plugin pour créer un JAR exécutable -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -82,7 +80,7 @@
             <configuration>
               <archive>
                 <manifest>
-                  <mainClass>fr.iut.sae.Executable</mainClass>
+                  <mainClass>Executable</mainClass>
                 </manifest>
               </archive>
               <descriptorRefs>
