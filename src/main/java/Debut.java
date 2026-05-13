@@ -1,7 +1,7 @@
 
 public class Debut extends Page{
-    public Debut(){
+    public Debut(int i){
         super();
-        this.numP = 0;
+        this.numP = i;
     }
 }

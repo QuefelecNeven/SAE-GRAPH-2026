@@ -25,13 +25,13 @@ public class Livre{
     private Set<Item> items;
 
 
-    public Livre(int nbpage, Debut pDeb, Fin pFin,List<Integer> l) {
+    public Livre(int nbpage, int pDeb, int pFin,List<Integer> l) {
         this.nbpage = nbpage;
-        this.pDeb = new Debut();
-        this.pFin = new Fin(nbpage);
+        this.pDeb = new Debut(pDeb);
+        this.pFin = new Fin(pFin);
         this.pages = new ArrayList<>();
-        items = poserObj(l);
         fill(); 
+        items = poserObj(l);
         this.graphe = initialiserGrapheAleatoire();
     }
 
@@ -40,6 +40,10 @@ public class Livre{
         for (int i = 0; i<l.size();i++){
             it.add(new Item(i));
         }
+        for(Item obj : items){
+            this.pages.get(obj.getPosO()).addobj(obj);
+        }
+        return it;
     }
 
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheSimple() {
@@ -150,10 +154,8 @@ public class Livre{
 
     private void fill(){
         initEnigmes();
-        this.pages.add(pDeb);
         for(int i = 1; i < nbpage-1; i++)
             this.pages.add(createPage(i));
-        this.pages.add(pFin);
     }
 
 
