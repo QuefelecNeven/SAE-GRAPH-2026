@@ -24,8 +24,8 @@ public class Livre {
         this.pFin = new Fin(nbpage);
         this.pages = new ArrayList<>();
         this.items = poserObj(l);
-        fill();
-        this.graphe = initialiserGrapheAleatoire(); // par défaut
+        remplirLesPages();
+        this.graphe = initialiserGrapheAleatoire(); 
     }
 
     public void utiliserGrapheSimple() {
@@ -36,9 +36,6 @@ public class Livre {
         this.graphe = initialiserGrapheAleatoire();
     }
 
-    // ------------------------------------------------------------------
-    // Accesseurs
-    // ------------------------------------------------------------------
 
     public Page getDebut() {
         return pDeb;
@@ -60,21 +57,14 @@ public class Livre {
         return graphe;
     }
 
-    // ------------------------------------------------------------------
-    // Construction des items
-    // ------------------------------------------------------------------
 
     private Set<Item> poserObj(List<Integer> l) {
         Set<Item> it = new HashSet<>();
         for (int i = 0; i < l.size(); i++) {
             it.add(new Item(l.get(i)));
         }
-        return it; // return manquant dans l'original
+        return it; 
     }
-
-    // ------------------------------------------------------------------
-    // Graphe simple (chemin garanti passant par les pages avec objets)
-    // ------------------------------------------------------------------
 
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheSimple() {
         Graph<Page, DefaultWeightedEdge> g =
@@ -126,10 +116,6 @@ public class Livre {
         return g;
     }
 
-    // ------------------------------------------------------------------
-    // Graphe aléatoire (avec garantie d'atteignabilité)
-    // ------------------------------------------------------------------
-
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheAleatoire() {
         Graph<Page, DefaultWeightedEdge> g =
                 new DefaultDirectedWeightedGraph<>(DefaultWeightedEdge.class);
@@ -143,7 +129,7 @@ public class Livre {
             g.addVertex(page);
         }
 
-        // Arcs aléatoires (2 à 3 par sommet)
+
         for (Page page : toutesPages) {
             int nbArcs = 2 + random.nextInt(2);
             List<Page> cibles = new ArrayList<>(toutesPages);
@@ -161,7 +147,6 @@ public class Livre {
             }
         }
 
-        // Garantir que chaque page est atteignable depuis pDeb
         for (Page page : toutesPages) {
             if (!estAtteignable(g, pDeb, page)) {
                 Page source = trouverPageAtteignable(g, pDeb, toutesPages, random);
@@ -170,7 +155,7 @@ public class Livre {
             }
         }
 
-        // Garantir que pFin est atteignable depuis chaque page
+
         for (Page page : toutesPages) {
             if (!estAtteignable(g, page, pFin)) {
                 DefaultWeightedEdge arc = g.addEdge(page, pFin);
@@ -180,10 +165,6 @@ public class Livre {
 
         return g;
     }
-
-    // ------------------------------------------------------------------
-    // Utilitaires graphe
-    // ------------------------------------------------------------------
 
     private boolean estAtteignable(Graph<Page, DefaultWeightedEdge> g, Page source, Page cible) {
         if (source.equals(cible)) return true;
@@ -213,9 +194,6 @@ public class Livre {
         return atteignables.get(random.nextInt(atteignables.size()));
     }
 
-    // ------------------------------------------------------------------
-    // Initialisation des pages
-    // ------------------------------------------------------------------
 
     private void initEnigmes() {
         if (enigmes.isEmpty()) {
@@ -230,7 +208,7 @@ public class Livre {
         return new Page(enigmes.get(r.nextInt(enigmes.size())), i);
     }
 
-    private void fill() {
+    private void remplirLesPages() {
         initEnigmes();
         this.pages.add(pDeb);
         for (int i = 1; i < nbpage - 1; i++) {
@@ -238,7 +216,6 @@ public class Livre {
         }
         this.pages.add(pFin);
 
-        // Assigner chaque item à la page correspondante
         for (Item item : items) {
             for (Page page : pages) {
                 if (page.getNumP() == item.getPosO()) {
