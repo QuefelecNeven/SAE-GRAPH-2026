@@ -1,12 +1,18 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+<<<<<<< HEAD
 import java.util.LinkedList;
+=======
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.PriorityQueue;
+<<<<<<< HEAD
 import java.util.Queue;
+=======
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
 import java.util.Set;
 
 import org.jgrapht.Graph;
@@ -26,7 +32,11 @@ public class Algorithme {
 
     private class Etat {
         Page page;
+<<<<<<< HEAD
         Set<Integer> objetsRecuperes;
+=======
+        Set<Integer> objetsRecuperes; 
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
 
         Etat(Page page, Set<Integer> objetsRecuperes) {
             this.page = page;
@@ -67,7 +77,11 @@ public class Algorithme {
 
     public List<Page> executer() {
         Page pDeb = livre.getDebut();
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
         int totalObjets = 0;
         for (Page p : graphe.vertexSet()) {
             if (p.contientObjet()) {
@@ -80,21 +94,36 @@ public class Algorithme {
 
         Set<Integer> objetsDepart = new HashSet<>();
         if (pDeb.contientObjet()) objetsDepart.add(pDeb.getNumP());
+<<<<<<< HEAD
 
         Etat etatInitial = new Etat(pDeb, objetsDepart);
         List<Page> cheminInitial = new ArrayList<>();
         cheminInitial.add(pDeb);
 
+=======
+        
+        Etat etatInitial = new Etat(pDeb, objetsDepart);
+        List<Page> cheminInitial = new ArrayList<>();
+        cheminInitial.add(pDeb);
+        
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
         fileAttente.add(new NoeudDijkstra(etatInitial, 0.0, cheminInitial));
         tempsMinimum.put(etatInitial, 0.0);
 
         while (!fileAttente.isEmpty()) {
+<<<<<<< HEAD
             NoeudDijkstra courant = fileAttente.poll();
 
+=======
+            NoeudDijkstra courant = fileAttente.poll(); 
+            
+            
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
             if (courant.tempsCumule > tempsMinimum.getOrDefault(courant.etat, Double.MAX_VALUE)) {
                 continue;
             }
 
+<<<<<<< HEAD
             if (courant.etat.page instanceof Fin && courant.etat.objetsRecuperes.size() == totalObjets) {
                 this.meilleurTemps = courant.tempsCumule;
                 return courant.chemin;
@@ -104,31 +133,61 @@ public class Algorithme {
                 Page voisin = graphe.getEdgeTarget(arc);
                 double tempsDeLenigme = graphe.getEdgeWeight(arc);
 
+=======
+
+            if (courant.etat.page instanceof Fin && courant.etat.objetsRecuperes.size() == totalObjets) {
+                this.meilleurTemps = courant.tempsCumule;
+                return courant.chemin; 
+            }
+
+
+            for (DefaultWeightedEdge arc : graphe.outgoingEdgesOf(courant.etat.page)) {
+                Page voisin = graphe.getEdgeTarget(arc);
+                double tempsDeLenigme = graphe.getEdgeWeight(arc);
+                
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
                 Set<Integer> nouveauxObjets = new HashSet<>(courant.etat.objetsRecuperes);
                 if (voisin.contientObjet()) {
                     nouveauxObjets.add(voisin.getNumP());
                 }
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
                 Etat nouvelEtat = new Etat(voisin, nouveauxObjets);
                 double nouveauTemps = courant.tempsCumule + tempsDeLenigme;
 
                 if (nouveauTemps < tempsMinimum.getOrDefault(nouvelEtat, Double.MAX_VALUE)) {
                     tempsMinimum.put(nouvelEtat, nouveauTemps);
+<<<<<<< HEAD
 
                     List<Page> nouveauChemin = new ArrayList<>(courant.chemin);
                     nouveauChemin.add(voisin);
 
+=======
+                    
+                    List<Page> nouveauChemin = new ArrayList<>(courant.chemin);
+                    nouveauChemin.add(voisin);
+                    
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
                     fileAttente.add(new NoeudDijkstra(nouvelEtat, nouveauTemps, nouveauChemin));
                 }
             }
         }
+<<<<<<< HEAD
 
         return new ArrayList<>();
+=======
+        
+        return new ArrayList<>(); 
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
     }
 
     public double getMeilleurTemps() {
         return meilleurTemps;
     }
+<<<<<<< HEAD
 
 
     private int nbPagesVisitees = 0;
@@ -218,4 +277,6 @@ public class Algorithme {
     public int getNbPagesVisiteesDijkstra() {
         return nbPagesVisiteesDijkstra;
     }
+=======
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
 }

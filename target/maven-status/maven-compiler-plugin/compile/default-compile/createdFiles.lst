@@ -14,3 +14,7 @@ Fin.class
 Livre.class
 Menu.class
 Algorithme.class
+<<<<<<< HEAD
+=======
+Page.class
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)

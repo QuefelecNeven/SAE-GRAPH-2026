@@ -58,8 +58,8 @@ public class Livre {
 =======
 =======
         this.items = poserObj(l);
-        fill();
-        this.graphe = initialiserGrapheAleatoire(); // par défaut
+        remplirLesPages();
+        this.graphe = initialiserGrapheAleatoire(); 
     }
 
     public void utiliserGrapheSimple() {
@@ -71,10 +71,13 @@ public class Livre {
         this.graphe = initialiserGrapheAleatoire();
     }
 
+<<<<<<< HEAD
     // ------------------------------------------------------------------
     // Accesseurs
     // ------------------------------------------------------------------
 >>>>>>> d2714cb (Fin)
+=======
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
 
     public Page getDebut() {
         return pDeb;
@@ -102,22 +105,19 @@ public class Livre {
         return graphe;
     }
 
-    // ------------------------------------------------------------------
-    // Construction des items
-    // ------------------------------------------------------------------
 
     private Set<Item> poserObj(List<Integer> l) {
         Set<Item> it = new HashSet<>();
         for (int i = 0; i < l.size(); i++) {
             it.add(new Item(l.get(i)));
         }
+<<<<<<< HEAD
         return it; // return manquant dans l'original
 >>>>>>> 556f834 (Fin)
+=======
+        return it; 
+>>>>>>> eb16fcd (Algorithme Djikstra implémenter a ajouter dans le menu)
     }
-
-    // ------------------------------------------------------------------
-    // Graphe simple (chemin garanti passant par les pages avec objets)
-    // ------------------------------------------------------------------
 
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheSimple() {
         Graph<Page, DefaultWeightedEdge> g =
@@ -175,10 +175,6 @@ public class Livre {
         return g;
     }
 
-    // ------------------------------------------------------------------
-    // Graphe aléatoire (avec garantie d'atteignabilité)
-    // ------------------------------------------------------------------
-
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheAleatoire() {
         Graph<Page, DefaultWeightedEdge> g =
                 new DefaultDirectedWeightedGraph<>(DefaultWeightedEdge.class);
@@ -193,10 +189,14 @@ public class Livre {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         //ajoute les liaison random
 =======
         // Arcs aléatoires (2 à 3 par sommet)
 >>>>>>> d2714cb (Fin)
+=======
+
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
         for (Page page : toutesPages) {
             int nbArcs = 2 + random.nextInt(2);
             List<Page> cibles = new ArrayList<>(toutesPages);
@@ -217,8 +217,11 @@ public class Livre {
         //verif toujours connexe
 =======
 
+<<<<<<< HEAD
         // Garantir que chaque page est atteignable depuis pDeb
 >>>>>>> d2714cb (Fin)
+=======
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
         for (Page page : toutesPages) {
             if (!estAtteignable(g, pDeb, page)) {
                 Page source = trouverPageAtteignable(g, pDeb, toutesPages, random);
@@ -228,10 +231,14 @@ public class Livre {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         //verif que la fin est atteignable
 =======
         // Garantir que pFin est atteignable depuis chaque page
 >>>>>>> d2714cb (Fin)
+=======
+
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
         for (Page page : toutesPages) {
             if (!estAtteignable(g, page, pFin)) {
                 DefaultWeightedEdge arc = g.addEdge(page, pFin);
@@ -245,11 +252,14 @@ public class Livre {
     // permet de savoir si il existe un chemin depuis le sommet source au sommets cible donné en parametre sur un graph donné lui aussi
 =======
 
+<<<<<<< HEAD
     // ------------------------------------------------------------------
     // Utilitaires graphe
     // ------------------------------------------------------------------
 
 >>>>>>> d2714cb (Fin)
+=======
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
     private boolean estAtteignable(Graph<Page, DefaultWeightedEdge> g, Page source, Page cible) {
         if (source.equals(cible)) return true;
         Set<Page> visites = new HashSet<>();
@@ -279,11 +289,14 @@ public class Livre {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     // ------------------------------------------------------------------
     // Initialisation des pages
     // ------------------------------------------------------------------
 >>>>>>> d2714cb (Fin)
+=======
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
 
     private void initEnigmes() {
         if (enigmes.isEmpty()) {
@@ -316,8 +329,11 @@ public class Livre {
         }
         this.pages.add(pFin);
 
+<<<<<<< HEAD
         // Assigner chaque item à la page correspondante
 >>>>>>> d2714cb (Fin)
+=======
+>>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
         for (Item item : items) {
             for (Page page : pages) {
                 if (page.getNumP() == item.getPosO()) {
