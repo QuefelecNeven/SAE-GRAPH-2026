@@ -152,7 +152,7 @@ public class Livre {
 
             int ajouts = 0;
             for (Page cible : cibles) {
-                if (ajouts >= nbArcs) break;
+                if (ajouts > nbArcs) break;
                 if (g.getEdge(page, cible) == null) {
                     DefaultWeightedEdge arc = g.addEdge(page, cible);
                     g.setEdgeWeight(arc, cible.getTempsResolution());
