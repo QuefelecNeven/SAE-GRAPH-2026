@@ -4,7 +4,7 @@ import de.svenjacobs.loremipsum.LoremIpsum;
 
 public class Enigme {
     private String textE;
-    private int tempResolution; // temps de résolution de l'énigmes
+    private int tempResolution; 
     private static Random rand = new Random(); 
     private LoremIpsum loremIpsum = new LoremIpsum();
 

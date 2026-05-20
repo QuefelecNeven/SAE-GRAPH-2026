@@ -150,7 +150,14 @@ public class Menu {
         // Label du sommet : numéro de page + indication s'il contient un objet
         exporter.setVertexAttributeProvider(page -> {
             Map<String, Attribute> attrs = new LinkedHashMap<>();
-            String label = "Page " + page.getNumP();
+            String label;
+            if (page instanceof Debut) {
+                label = "Début (Page " + page.getNumP() + ")";
+            } else if (page instanceof Fin) {
+                label = "Fin (Page " + page.getNumP() + ")";
+            } else {
+                label = "Page " + page.getNumP();
+            }
             if (page.contientObjet()) {
                 label += "\n[Objet : " + page.getObj().getNom() + "]";
             }
