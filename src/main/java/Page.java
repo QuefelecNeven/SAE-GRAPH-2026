@@ -53,10 +53,16 @@ public class Page {
         return this.enigme.getTempRes();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
     
     public void setEnigme(Enigme enigme) {
         this.enigme = enigme;
     }
+<<<<<<< HEAD
 =======
 >>>>>>> d2714cb (Fin)
+=======
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
 }

@@ -35,6 +35,10 @@
       <artifactId>jgrapht-core</artifactId>
       <version>1.5.2</version>
     </dependency>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
     <dependency>
       <groupId>org.jgrapht</groupId>
       <artifactId>jgrapht-io</artifactId>

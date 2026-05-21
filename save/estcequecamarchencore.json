@@ -1,0 +1,504 @@
+{
+  "pageCouranteId": 0,
+  "inventaire": [],
+  "nbPages": 25,
+  "pages": [
+    {
+      "id": 0,
+      "type": "Debut",
+      "tempResolution": 0
+    },
+    {
+      "id": 1,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
+      "tempResolution": 32
+    },
+    {
+      "id": 2,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet",
+      "tempResolution": 22,
+      "obj": {
+        "nom": "bouclier",
+        "posO": 2
+      }
+    },
+    {
+      "id": 3,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et",
+      "tempResolution": 177
+    },
+    {
+      "id": 4,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata",
+      "tempResolution": 919
+    },
+    {
+      "id": 5,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor",
+      "tempResolution": 588,
+      "obj": {
+        "nom": "clé",
+        "posO": 5
+      }
+    },
+    {
+      "id": 6,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt",
+      "tempResolution": 695
+    },
+    {
+      "id": 7,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata",
+      "tempResolution": 935
+    },
+    {
+      "id": 8,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At",
+      "tempResolution": 881,
+      "obj": {
+        "nom": "épée",
+        "posO": 8
+      }
+    },
+    {
+      "id": 9,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo",
+      "tempResolution": 144
+    },
+    {
+      "id": 10,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum",
+      "tempResolution": 671
+    },
+    {
+      "id": 11,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor",
+      "tempResolution": 516
+    },
+    {
+      "id": 12,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem",
+      "tempResolution": 269
+    },
+    {
+      "id": 13,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "tempResolution": 194
+    },
+    {
+      "id": 14,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et",
+      "tempResolution": 141
+    },
+    {
+      "id": 15,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor",
+      "tempResolution": 99
+    },
+    {
+      "id": 16,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est",
+      "tempResolution": 573
+    },
+    {
+      "id": 17,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no",
+      "tempResolution": 177
+    },
+    {
+      "id": 18,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem",
+      "tempResolution": 433
+    },
+    {
+      "id": 19,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
+      "tempResolution": 177
+    },
+    {
+      "id": 20,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit",
+      "tempResolution": 62
+    },
+    {
+      "id": 21,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam",
+      "tempResolution": 206
+    },
+    {
+      "id": 22,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no",
+      "tempResolution": 868
+    },
+    {
+      "id": 23,
+      "type": "Normale",
+      "textEnigme": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy",
+      "tempResolution": 980
+    },
+    {
+      "id": 25,
+      "type": "Fin",
+      "tempResolution": 0
+    }
+  ],
+  "arcs": [
+    {
+      "sourceId": 0,
+      "targetId": 2,
+      "poids": 22.0
+    },
+    {
+      "sourceId": 0,
+      "targetId": 20,
+      "poids": 62.0
+    },
+    {
+      "sourceId": 0,
+      "targetId": 9,
+      "poids": 144.0
+    },
+    {
+      "sourceId": 0,
+      "targetId": 14,
+      "poids": 141.0
+    },
+    {
+      "sourceId": 1,
+      "targetId": 17,
+      "poids": 177.0
+    },
+    {
+      "sourceId": 1,
+      "targetId": 10,
+      "poids": 671.0
+    },
+    {
+      "sourceId": 1,
+      "targetId": 14,
+      "poids": 141.0
+    },
+    {
+      "sourceId": 2,
+      "targetId": 6,
+      "poids": 695.0
+    },
+    {
+      "sourceId": 2,
+      "targetId": 25,
+      "poids": 0.0
+    },
+    {
+      "sourceId": 2,
+      "targetId": 15,
+      "poids": 99.0
+    },
+    {
+      "sourceId": 3,
+      "targetId": 19,
+      "poids": 177.0
+    },
+    {
+      "sourceId": 3,
+      "targetId": 16,
+      "poids": 573.0
+    },
+    {
+      "sourceId": 3,
+      "targetId": 25,
+      "poids": 0.0
+    },
+    {
+      "sourceId": 4,
+      "targetId": 17,
+      "poids": 177.0
+    },
+    {
+      "sourceId": 4,
+      "targetId": 18,
+      "poids": 433.0
+    },
+    {
+      "sourceId": 5,
+      "targetId": 8,
+      "poids": 881.0
+    },
+    {
+      "sourceId": 5,
+      "targetId": 9,
+      "poids": 144.0
+    },
+    {
+      "sourceId": 6,
+      "targetId": 4,
+      "poids": 919.0
+    },
+    {
+      "sourceId": 6,
+      "targetId": 3,
+      "poids": 177.0
+    },
+    {
+      "sourceId": 7,
+      "targetId": 19,
+      "poids": 177.0
+    },
+    {
+      "sourceId": 7,
+      "targetId": 12,
+      "poids": 269.0
+    },
+    {
+      "sourceId": 8,
+      "targetId": 17,
+      "poids": 177.0
+    },
+    {
+      "sourceId": 8,
+      "targetId": 7,
+      "poids": 935.0
+    },
+    {
+      "sourceId": 8,
+      "targetId": 2,
+      "poids": 22.0
+    },
+    {
+      "sourceId": 9,
+      "targetId": 8,
+      "poids": 881.0
+    },
+    {
+      "sourceId": 9,
+      "targetId": 12,
+      "poids": 269.0
+    },
+    {
+      "sourceId": 9,
+      "targetId": 14,
+      "poids": 141.0
+    },
+    {
+      "sourceId": 10,
+      "targetId": 20,
+      "poids": 62.0
+    },
+    {
+      "sourceId": 10,
+      "targetId": 0,
+      "poids": 0.0
+    },
+    {
+      "sourceId": 10,
+      "targetId": 8,
+      "poids": 881.0
+    },
+    {
+      "sourceId": 11,
+      "targetId": 20,
+      "poids": 62.0
+    },
+    {
+      "sourceId": 11,
+      "targetId": 8,
+      "poids": 881.0
+    },
+    {
+      "sourceId": 11,
+      "targetId": 6,
+      "poids": 695.0
+    },
+    {
+      "sourceId": 12,
+      "targetId": 0,
+      "poids": 0.0
+    },
+    {
+      "sourceId": 12,
+      "targetId": 17,
+      "poids": 177.0
+    },
+    {
+      "sourceId": 13,
+      "targetId": 4,
+      "poids": 919.0
+    },
+    {
+      "sourceId": 13,
+      "targetId": 20,
+      "poids": 62.0
+    },
+    {
+      "sourceId": 13,
+      "targetId": 7,
+      "poids": 935.0
+    },
+    {
+      "sourceId": 14,
+      "targetId": 1,
+      "poids": 32.0
+    },
+    {
+      "sourceId": 14,
+      "targetId": 0,
+      "poids": 0.0
+    },
+    {
+      "sourceId": 14,
+      "targetId": 16,
+      "poids": 573.0
+    },
+    {
+      "sourceId": 15,
+      "targetId": 21,
+      "poids": 206.0
+    },
+    {
+      "sourceId": 15,
+      "targetId": 17,
+      "poids": 177.0
+    },
+    {
+      "sourceId": 16,
+      "targetId": 1,
+      "poids": 32.0
+    },
+    {
+      "sourceId": 16,
+      "targetId": 15,
+      "poids": 99.0
+    },
+    {
+      "sourceId": 17,
+      "targetId": 0,
+      "poids": 0.0
+    },
+    {
+      "sourceId": 17,
+      "targetId": 13,
+      "poids": 194.0
+    },
+    {
+      "sourceId": 18,
+      "targetId": 25,
+      "poids": 0.0
+    },
+    {
+      "sourceId": 18,
+      "targetId": 14,
+      "poids": 141.0
+    },
+    {
+      "sourceId": 18,
+      "targetId": 19,
+      "poids": 177.0
+    },
+    {
+      "sourceId": 19,
+      "targetId": 4,
+      "poids": 919.0
+    },
+    {
+      "sourceId": 19,
+      "targetId": 8,
+      "poids": 881.0
+    },
+    {
+      "sourceId": 20,
+      "targetId": 25,
+      "poids": 0.0
+    },
+    {
+      "sourceId": 20,
+      "targetId": 1,
+      "poids": 32.0
+    },
+    {
+      "sourceId": 21,
+      "targetId": 11,
+      "poids": 516.0
+    },
+    {
+      "sourceId": 21,
+      "targetId": 5,
+      "poids": 588.0
+    },
+    {
+      "sourceId": 22,
+      "targetId": 12,
+      "poids": 269.0
+    },
+    {
+      "sourceId": 22,
+      "targetId": 25,
+      "poids": 0.0
+    },
+    {
+      "sourceId": 23,
+      "targetId": 20,
+      "poids": 62.0
+    },
+    {
+      "sourceId": 23,
+      "targetId": 21,
+      "poids": 206.0
+    },
+    {
+      "sourceId": 23,
+      "targetId": 12,
+      "poids": 269.0
+    },
+    {
+      "sourceId": 25,
+      "targetId": 23,
+      "poids": 980.0
+    },
+    {
+      "sourceId": 25,
+      "targetId": 13,
+      "poids": 194.0
+    },
+    {
+      "sourceId": 25,
+      "targetId": 17,
+      "poids": 177.0
+    },
+    {
+      "sourceId": 25,
+      "targetId": 7,
+      "poids": 935.0
+    },
+    {
+      "sourceId": 25,
+      "targetId": 6,
+      "poids": 695.0
+    },
+    {
+      "sourceId": 21,
+      "targetId": 22,
+      "poids": 868.0
+    }
+  ]
+}

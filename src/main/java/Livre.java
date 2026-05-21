@@ -350,9 +350,15 @@ public class Livre {
 >>>>>>> d2714cb (Fin)
     }
     
+<<<<<<< HEAD
     
      //Reconstruit intégralement le graphe à partir du fichier de sauvegarde
      
+=======
+    /**
+     * Reconstruit intégralement le graphe JGraphT à partir du fichier de sauvegarde
+     */
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
     public void chargerDepuisSauvegarde(Sauvegarde save) {
         this.nbpage = save.nbPages;
         this.pages = new ArrayList<>();
@@ -371,7 +377,11 @@ public class Livre {
             } else {
                 p = new Page(pd.id);
                 if (pd.textEnigme != null) {
+<<<<<<< HEAD
                     p.setEnigme(new Enigme(pd.textEnigme, pd.tempResolution)); 
+=======
+                    p.setEnigme(new Enigme(pd.textEnigme, pd.tempResolution)); // Nécessite d'ajouter ce constructeur dans Enigme.java
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
                 }
             }
             if (pd.obj != null) {
@@ -392,4 +402,10 @@ public class Livre {
         }
     }
 
+<<<<<<< HEAD
+=======
+    public Page getPageById(int id) {
+        return pages.stream().filter(p -> p.getNumP() == id).findFirst().orElse(null);
+    }
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
 }

@@ -25,18 +25,30 @@ public class Menu {
 
     public void afficherMenuPrincipal() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         System.out.println("\n INITIALISATION DE L'AVENTURE ");
         System.out.println("  1. Créer une nouvelle partie (Nouveau graphe)");
         System.out.println("  2. Charger un fichier de sauvegarde");
         System.out.print("Votre choix : ");
 
+=======
+        System.out.println("\n=== INITIALISATION DE L'AVENTURE ===");
+        System.out.println("  1. Créer une nouvelle partie (Nouveau graphe)");
+        System.out.println("  2. Charger un fichier de sauvegarde");
+        System.out.print("Votre choix : ");
+        
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
         int choixInit = -1;
         while (choixInit < 1 || choixInit > 2) {
             String entree = scanner.next();
             try {
                 choixInit = Integer.parseInt(entree);
                 if (choixInit < 1 || choixInit > 2) {
+<<<<<<< HEAD
                     System.out.print("Choix invalide, saisissez une bonne réponse : ");
+=======
+                    System.out.print("Choix invalide, saisissez 1 ou 2 : ");
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
                 }
             } catch (NumberFormatException e) {
                 System.out.print("Veuillez entrer un nombre valide (1 ou 2) : ");
@@ -44,25 +56,32 @@ public class Menu {
         }
 
         if (choixInit == 1) {
+<<<<<<< HEAD
             creerNouvellePartie();
+=======
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
             choisirTypeGraphe();
         } else {
             chargerPartieDossier();
         }
 
+<<<<<<< HEAD
         int choix = -1;
         while (choix != 7) {
             System.out.println("\n MENU PRINCIPAL ");
 =======
         choisirTypeGraphe();
+=======
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
         int choix = -1;
-        while (choix != 5) {
+        while (choix != 7) {
             System.out.println("\n=== MENU PRINCIPAL ===");
 >>>>>>> d2714cb (Fin)
             System.out.println("  1. Jouer (Mode Humain)");
             System.out.println("  2. Jouer (Mode Algorithme)");
             System.out.println("  3. Exporter le graphe en .dot / PDF");
             System.out.println("  4. Changer le type de graphe");
+<<<<<<< HEAD
 <<<<<<< HEAD
             System.out.println("  5. Sauvegarder la partie");
             System.out.println("  6. Charger une sauvegarde");
@@ -86,6 +105,20 @@ public class Menu {
                 } else {
                     scanner.next();
 >>>>>>> d2714cb (Fin)
+=======
+            System.out.println("  5. Sauvegarder la partie");
+            System.out.println("  6. Charger une sauvegarde");
+            System.out.println("  7. Quitter");
+            System.out.print("Votre choix : ");
+
+            choix = -1;
+            while (choix < 1 || choix > 7) {
+                String entree = scanner.next();
+                try {
+                    choix = Integer.parseInt(entree);
+                } catch (NumberFormatException e) {
+                    // Ignorer les entrées incorrectes et reboucler
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
                 }
             }
 
@@ -95,12 +128,18 @@ public class Menu {
                 case 3 -> exporterGraphe();
                 case 4 -> choisirTypeGraphe();
 <<<<<<< HEAD
+<<<<<<< HEAD
                 case 5 -> sauvegarderPartieDossier();
                 case 6 -> chargerPartieDossier();
                 case 7 -> System.out.println("Au revoir !");
 =======
                 case 5 -> System.out.println("Au revoir !");
 >>>>>>> d2714cb (Fin)
+=======
+                case 5 -> sauvegarderPartieDossier();
+                case 6 -> chargerPartieDossier();
+                case 7 -> System.out.println("Au revoir !");
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
             }
         }
     }
@@ -187,16 +226,23 @@ public class Menu {
         int choix = -1;
         while (choix < 1 || choix > 2) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
             String entree = scanner.next();
             try {
                 choix = Integer.parseInt(entree);
             } catch (NumberFormatException e) {
+<<<<<<< HEAD
 =======
             if (scanner.hasNextInt()) {
                 choix = scanner.nextInt();
             } else {
                 scanner.next();
 >>>>>>> d2714cb (Fin)
+=======
+                // Réessayer silencieusement
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
             }
         }
 
@@ -252,6 +298,10 @@ public class Menu {
 
             int index = lireChoixOuSauvegarde(choix.size());
             if (index == -2) {
+<<<<<<< HEAD
+=======
+                // L'utilisateur a sauvegardé sa partie à la volée, on rafraîchit la page actuelle
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
                 continue;
             }
             pageCourante = choix.get(index);
@@ -259,16 +309,29 @@ public class Menu {
         terminerPartie();
     }
 
+<<<<<<< HEAD
+=======
+    /** Lit le choix de destination ou intercepte la commande de sauvegarde instantanée. */
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
     private int lireChoixOuSauvegarde(int max) {
         while (true) {
             System.out.print("Votre choix (1-" + max + ") ou écrivez 'save' pour sauvegarder : ");
             String entree = scanner.next();
+<<<<<<< HEAD
 
             if (entree.equalsIgnoreCase("save")) {
                 sauvegarderPartieDossier();
                 return -2;
             }
 
+=======
+            
+            if (entree.equalsIgnoreCase("save")) {
+                sauvegarderPartieDossier();
+                return -2; // Code de retour indiquant qu'aucune action de déplacement n'a été faite
+            }
+            
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
             try {
                 int index = Integer.parseInt(entree) - 1;
                 if (index >= 0 && index < max) {
@@ -278,6 +341,48 @@ public class Menu {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Entrée non reconnue. Saisissez un nombre ou tapez 'save'.");
+<<<<<<< HEAD
+=======
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // Gestion des fichiers dans le dossier "save"
+    // ------------------------------------------------------------------
+
+    private void sauvegarderPartieDossier() {
+        System.out.print("Entrez le nom personnalisé pour votre sauvegarde (sans extension) : ");
+        String nomFichier = scanner.next();
+        
+        File dossier = new File("save");
+        if (!dossier.exists()) {
+            dossier.mkdir();
+        }
+        
+        String chemin = "save/" + nomFichier + ".json";
+        GestionSauvegarde.sauvegarder(chemin, livre, pageCourante, inventaire);
+        System.out.println("✅ Partie enregistrée avec succès sous : " + chemin);
+    }
+
+    private void chargerPartieDossier() {
+        System.out.print("Entrez le nom du fichier à charger depuis le dossier 'save' (sans extension) : ");
+        String nomFichier = scanner.next();
+        String chemin = "save/" + nomFichier + ".json";
+        
+        Sauvegarde save = GestionSauvegarde.charger(chemin);
+        if (save != null) {
+            this.livre.chargerDepuisSauvegarde(save);
+            this.pageCourante = this.livre.getPageById(save.pageCouranteId);
+            this.inventaire = save.inventaire;
+            System.out.println("✅ Sauvegarde restaurée ! Vous reprenez à la page : " + pageCourante.getNumP());
+        } else {
+            System.out.println("❌ Impossible de trouver ou charger le fichier '" + chemin + "'.");
+            if (this.pageCourante == null) {
+                System.out.println("Initialisation forcée d'une nouvelle configuration...");
+                choisirTypeGraphe();
+                this.pageCourante = livre.getDebut();
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
             }
         }
     }
@@ -418,7 +523,6 @@ public class Menu {
 =======
         }
 
-        // Génération automatique du PDF via la commande dot
         try {
             Process process = new ProcessBuilder("dot", "-T", "pdf", nomFichier, "-o", "graph.pdf")
                 .inheritIO()
@@ -428,16 +532,18 @@ public class Menu {
                 System.out.println("PDF généré : graph.pdf");
             } else {
                 System.out.println("Erreur lors de la génération du PDF (code " + code + ").");
-                System.out.println("Vérifiez que graphviz est installé : sudo apt install graphviz");
             }
         } catch (IOException e) {
             System.out.println("Impossible de lancer 'dot' : " + e.getMessage());
-            System.out.println("Installez graphviz : sudo apt install graphviz");
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             System.out.println("Génération interrompue.");
 >>>>>>> d2714cb (Fin)
         }
+<<<<<<< HEAD
+=======
+    }
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
 
         try {
             Process process = new ProcessBuilder("dot", "-T", "pdf", nomFichier, "-o", "graph.pdf")
@@ -473,7 +579,11 @@ public class Menu {
             Item obj = pageCourante.getObj();
             System.out.println("Vous avez récupéré un objet : " + obj.getNom());
             inventaire.add(obj);
+<<<<<<< HEAD
             pageCourante.setObj(null);
+=======
+            pageCourante.setObj(null); // Consomme l'objet pour éviter la duplication post-sauvegarde
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
         }
     }
 

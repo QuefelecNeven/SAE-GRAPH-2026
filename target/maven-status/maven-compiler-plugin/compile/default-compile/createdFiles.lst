@@ -2,7 +2,10 @@ Sauvegarde$ArcData.class
 GestionSauvegarde.class
 Enigme.class
 Debut.class
+<<<<<<< HEAD
 Algorithme$NoeudBFS.class
+=======
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
 Algorithme$NoeudDijkstra.class
 Sauvegarde.class
 Sauvegarde$PageData.class
@@ -15,6 +18,9 @@ Livre.class
 Menu.class
 Algorithme.class
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 Page.class
 >>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
+=======
+>>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
