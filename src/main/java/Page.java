@@ -45,4 +45,8 @@ public class Page {
         if(this.enigme == null) return 0;
         return this.enigme.getTempRes();
     }
+    
+    public void setEnigme(Enigme enigme) {
+        this.enigme = enigme;
+    }
 }

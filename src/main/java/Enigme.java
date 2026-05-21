@@ -13,6 +13,11 @@ public class Enigme {
         this.textE = genereLorem();
         this.tempResolution = rand.nextInt(1000) + 1; 
     }
+    
+    public Enigme(String text, int temps) {
+        this.textE = text;
+        this.tempResolution = temps;
+    }
 
     public String genereLorem(){
         LoremIpsum loremIpsum = new LoremIpsum();

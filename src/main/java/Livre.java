@@ -225,4 +225,50 @@ public class Livre {
             }
         }
     }
+    
+    /**
+     * Reconstruit intégralement le graphe JGraphT à partir du fichier de sauvegarde
+     */
+    public void chargerDepuisSauvegarde(Sauvegarde save) {
+        this.nbpage = save.nbPages;
+        this.pages = new ArrayList<>();
+        this.items = new HashSet<>();
+        
+        this.graphe = new DefaultDirectedWeightedGraph<>(DefaultWeightedEdge.class);
+
+        for (Sauvegarde.PageData pd : save.pages) {
+            Page p;
+            if ("Debut".equals(pd.type)) {
+                this.pDeb = new Debut(pd.id);
+                p = this.pDeb;
+            } else if ("Fin".equals(pd.type)) {
+                this.pFin = new Fin(pd.id);
+                p = this.pFin;
+            } else {
+                p = new Page(pd.id);
+                if (pd.textEnigme != null) {
+                    p.setEnigme(new Enigme(pd.textEnigme, pd.tempResolution)); // Nécessite d'ajouter ce constructeur dans Enigme.java
+                }
+            }
+            if (pd.obj != null) {
+                p.setObj(pd.obj);
+                this.items.add(pd.obj);
+            }
+            this.pages.add(p);
+            this.graphe.addVertex(p);
+        }
+
+        for (Sauvegarde.ArcData ad : save.arcs) {
+            Page source = getPageById(ad.sourceId);
+            Page cible = getPageById(ad.targetId);
+            if (source != null && cible != null) {
+                DefaultWeightedEdge arc = this.graphe.addEdge(source, cible);
+                this.graphe.setEdgeWeight(arc, ad.poids);
+            }
+        }
+    }
+
+    public Page getPageById(int id) {
+        return pages.stream().filter(p -> p.getNumP() == id).findFirst().orElse(null);
+    }
 }
