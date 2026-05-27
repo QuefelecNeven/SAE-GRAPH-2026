@@ -3,9 +3,13 @@ GestionSauvegarde.class
 Enigme.class
 Debut.class
 <<<<<<< HEAD
+<<<<<<< HEAD
 Algorithme$NoeudBFS.class
 =======
 >>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
+=======
+Algorithme$NoeudBFS.class
+>>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
 Algorithme$NoeudDijkstra.class
 Sauvegarde.class
 Sauvegarde$PageData.class
