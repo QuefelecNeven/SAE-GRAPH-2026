@@ -18,23 +18,18 @@ public class Menu {
     private List<Item> inventaire;
     private Scanner scanner;
 
-    public Menu(Livre livre) {
-        this.livre = livre;
-        this.pageCourante = livre.getDebut();
+    public Menu() {
         this.inventaire = new ArrayList<>();
         this.scanner = new Scanner(System.in);
     }
 
-    // ------------------------------------------------------------------
-    // Menu principal (boucle jusqu'à Quitter)
-    // ------------------------------------------------------------------
 
     public void afficherMenuPrincipal() {
         System.out.println("\n=== INITIALISATION DE L'AVENTURE ===");
         System.out.println("  1. Créer une nouvelle partie (Nouveau graphe)");
         System.out.println("  2. Charger un fichier de sauvegarde");
         System.out.print("Votre choix : ");
-        
+
         int choixInit = -1;
         while (choixInit < 1 || choixInit > 2) {
             String entree = scanner.next();
@@ -49,6 +44,7 @@ public class Menu {
         }
 
         if (choixInit == 1) {
+            creerNouvellePartie();
             choisirTypeGraphe();
         } else {
             chargerPartieDossier();
@@ -72,7 +68,6 @@ public class Menu {
                 try {
                     choix = Integer.parseInt(entree);
                 } catch (NumberFormatException e) {
-                    // Ignorer les entrées incorrectes et reboucler
                 }
             }
 
@@ -88,6 +83,71 @@ public class Menu {
         }
     }
 
+
+    private void creerNouvellePartie() {
+        // --- Nombre de pages ---
+        System.out.println("\n=== CONFIGURATION DU LIVRE ===");
+        System.out.print("Nombre de pages du livre (minimum 5) : ");
+        int nbPages = 0;
+        while (nbPages < 5) {
+            String entree = scanner.next();
+            try {
+                nbPages = Integer.parseInt(entree);
+                if (nbPages < 5) {
+                    System.out.print("Minimum 5 pages, réessayez : ");
+                }
+            } catch (NumberFormatException e) {
+                System.out.print("Nombre invalide, réessayez : ");
+            }
+        }
+
+        System.out.println("Combien d'objets voulez-vous placer dans le livre ? (0 pour aucun) ");
+        int nbObjets = -1;
+        while (nbObjets < 0) {
+            String entree = scanner.next();
+            try {
+                nbObjets = Integer.parseInt(entree);
+                if (nbObjets < 0) {
+                    System.out.print("Valeur invalide, réessayez : ");
+                }
+            } catch (NumberFormatException e) {
+                System.out.print("Nombre invalide, réessayez : ");
+            }
+        }
+
+        List<Integer> pagesObjets = new ArrayList<>();
+        if (nbObjets > 0) {
+            System.out.println("Entrez les numéros de pages où placer les objets.");
+            System.out.println("(Valeurs acceptées : entre 1 et " + (nbPages - 1) + ")");
+            for (int i = 1; i <= nbObjets; i++) {
+                int page = -1;
+                while (page < 1 || page >= nbPages || pagesObjets.contains(page)) {
+                    System.out.print("  Objet " + i + " - Page : ");
+                    String entree = scanner.next();
+                    try {
+                        page = Integer.parseInt(entree);
+                        if (page < 1 || page >= nbPages) {
+                            System.out.println("  La page doit être entre 1 et " + (nbPages - 1) + ".");
+                            page = -1;
+                        } else if (pagesObjets.contains(page)) {
+                            System.out.println("  Cette page contient déjà un objet, choisissez-en une autre.");
+                            page = -1;
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("  Nombre invalide.");
+                    }
+                }
+                pagesObjets.add(page);
+            }
+        }
+
+        this.livre = new Livre(nbPages, pagesObjets);
+        this.pageCourante = livre.getDebut();
+        this.inventaire = new ArrayList<>();
+
+        System.out.println("Livre créé avec " + nbPages + " pages et " + pagesObjets.size() + " objet(s) : " + pagesObjets);
+    }
+
     private void choisirTypeGraphe() {
         System.out.println("\n=== TYPE DE GRAPHE ===");
         System.out.println("  1. Graphe Simple (chemin garanti passant par les objets)");
@@ -100,7 +160,6 @@ public class Menu {
             try {
                 choix = Integer.parseInt(entree);
             } catch (NumberFormatException e) {
-                // Réessayer silencieusement
             }
         }
 
@@ -113,9 +172,6 @@ public class Menu {
         }
     }
 
-    // ------------------------------------------------------------------
-    // Mode humain
-    // ------------------------------------------------------------------
 
     public void jouerHumain() {
         System.out.println("\n=== DÉBUT DE L'AVENTURE (Mode Humain) ===");
@@ -131,12 +187,15 @@ public class Menu {
 
             System.out.println("\nDestinations possibles :");
             for (int i = 0; i < choix.size(); i++) {
-                System.out.println("  " + (i + 1) + ". Page " + choix.get(i).getNumP());
+                Page p = choix.get(i);
+                String label = "Page " + p.getNumP();
+                if (p instanceof Fin)   label = "Fin (Page " + p.getNumP() + ")";
+                if (p instanceof Debut) label = "Début (Page " + p.getNumP() + ")";
+                System.out.println("  " + (i + 1) + ". " + label);
             }
 
             int index = lireChoixOuSauvegarde(choix.size());
             if (index == -2) {
-                // L'utilisateur a sauvegardé sa partie à la volée, on rafraîchit la page actuelle
                 continue;
             }
             pageCourante = choix.get(index);
@@ -144,17 +203,16 @@ public class Menu {
         terminerPartie();
     }
 
-    /** Lit le choix de destination ou intercepte la commande de sauvegarde instantanée. */
     private int lireChoixOuSauvegarde(int max) {
         while (true) {
             System.out.print("Votre choix (1-" + max + ") ou écrivez 'save' pour sauvegarder : ");
             String entree = scanner.next();
-            
+
             if (entree.equalsIgnoreCase("save")) {
                 sauvegarderPartieDossier();
-                return -2; // Code de retour indiquant qu'aucune action de déplacement n'a été faite
+                return -2;
             }
-            
+
             try {
                 int index = Integer.parseInt(entree) - 1;
                 if (index >= 0 && index < max) {
@@ -168,57 +226,93 @@ public class Menu {
         }
     }
 
-    // ------------------------------------------------------------------
-    // Gestion des fichiers dans le dossier "save"
-    // ------------------------------------------------------------------
+
 
     private void sauvegarderPartieDossier() {
         System.out.print("Entrez le nom personnalisé pour votre sauvegarde (sans extension) : ");
         String nomFichier = scanner.next();
-        
+
         File dossier = new File("save");
         if (!dossier.exists()) {
             dossier.mkdir();
         }
-        
+
         String chemin = "save/" + nomFichier + ".json";
         GestionSauvegarde.sauvegarder(chemin, livre, pageCourante, inventaire);
-        System.out.println("✅ Partie enregistrée avec succès sous : " + chemin);
+        System.out.println("Partie enregistrée avec succès sous : " + chemin);
     }
 
     private void chargerPartieDossier() {
         System.out.print("Entrez le nom du fichier à charger depuis le dossier 'save' (sans extension) : ");
         String nomFichier = scanner.next();
         String chemin = "save/" + nomFichier + ".json";
-        
+
         Sauvegarde save = GestionSauvegarde.charger(chemin);
         if (save != null) {
+            if (this.livre == null) {
+                this.livre = new Livre(save.nbPages, new ArrayList<>());
+            }
             this.livre.chargerDepuisSauvegarde(save);
             this.pageCourante = this.livre.getPageById(save.pageCouranteId);
-            this.inventaire = save.inventaire;
-            System.out.println("✅ Sauvegarde restaurée ! Vous reprenez à la page : " + pageCourante.getNumP());
+            this.inventaire = save.inventaire != null ? save.inventaire : new ArrayList<>();
+            System.out.println("Sauvegarde restaurée ! Vous reprenez à la page : " + pageCourante.getNumP());
         } else {
-            System.out.println("❌ Impossible de trouver ou charger le fichier '" + chemin + "'.");
-            if (this.pageCourante == null) {
+            System.out.println("Impossible de trouver ou charger le fichier '" + chemin + "'.");
+            if (this.livre == null) {
                 System.out.println("Initialisation forcée d'une nouvelle configuration...");
+                creerNouvellePartie();
                 choisirTypeGraphe();
-                this.pageCourante = livre.getDebut();
             }
         }
     }
 
-    // ------------------------------------------------------------------
-    // Mode IA
-    // ------------------------------------------------------------------
 
     public void jouerIA() {
-        System.out.println("\n=== DÉBUT DE L'AVENTURE (Mode Algorithme) ===");
-        System.out.println("L'algorithme n'est pas encore implémenté.");
-    }
+        System.out.println("\n=== MODE ALGORITHME ===");
+        System.out.println("  1. Dijkstra (chemin le plus rapide en temps, collecte tous les objets)");
+        System.out.println("  2. BFS (chemin le plus court en nombre de pages jusqu'à la Fin)");
+        System.out.print("Votre choix : ");
 
-    // ------------------------------------------------------------------
-    // Export DOT
-    // ------------------------------------------------------------------
+        int choix = -1;
+        while (choix < 1 || choix > 2) {
+            String entree = scanner.next();
+            try {
+                choix = Integer.parseInt(entree);
+            } catch (NumberFormatException e) {
+            }
+        }
+
+        Algorithme algo = new Algorithme(livre);
+
+        if (choix == 1) {
+            System.out.println("\n>> Lancement de Dijkstra...");
+            List<Page> chemin = algo.executer();
+            if (chemin.isEmpty()) {
+                System.out.println("Aucun chemin trouvé collectant tous les objets jusqu'à la Fin.");
+            } else {
+                System.out.println("Chemin trouvé (" + chemin.size() + " pages) :");
+                for (Page p : chemin) {
+                    System.out.print("Page " + p.getNumP() + " ");
+                }
+                System.out.println();
+                System.out.println("Temps total : " + algo.getMeilleurTemps() + "s");
+            }
+        } else {
+            System.out.println("\n>> Lancement du BFS...");
+            List<Page> chemin = algo.executerBFS();
+            if (chemin.isEmpty()) {
+                System.out.println("Aucun chemin trouvé jusqu'à la page Fin.");
+            } else {
+                System.out.println("Chemin trouvé (" + chemin.size() + " pages) :");
+                for (Page p : chemin) {
+                    System.out.print("Page " + p.getNumP() + " ");
+                }
+                System.out.println();
+                System.out.println("Temps total : " + algo.getTempsBFS() + "s");
+                System.out.println("Nombre de pages visitées pendant la recherche : " + algo.getNbPagesVisitees());
+            }
+        }
+    }
 
     public void exporterGraphe() {
         String nomFichier = "graph.dot";
@@ -267,18 +361,17 @@ public class Menu {
                 System.out.println("PDF généré : graph.pdf");
             } else {
                 System.out.println("Erreur lors de la génération du PDF (code " + code + ").");
+                System.out.println("Vérifiez que graphviz est installé : sudo apt install graphviz");
             }
         } catch (IOException e) {
             System.out.println("Impossible de lancer 'dot' : " + e.getMessage());
+            System.out.println("Installez graphviz : sudo apt install graphviz");
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             System.out.println("Génération interrompue.");
         }
     }
 
-    // ------------------------------------------------------------------
-    // Affichage de l'état courant
-    // ------------------------------------------------------------------
 
     private void afficherEtat() {
         System.out.println("\n--- Page " + pageCourante.getNumP() + " ---");
@@ -294,13 +387,10 @@ public class Menu {
             Item obj = pageCourante.getObj();
             System.out.println("Vous avez récupéré un objet : " + obj.getNom());
             inventaire.add(obj);
-            pageCourante.setObj(null); // Consomme l'objet pour éviter la duplication post-sauvegarde
+            pageCourante.setObj(null);
         }
     }
 
-    // ------------------------------------------------------------------
-    // Fin de partie
-    // ------------------------------------------------------------------
 
     private void terminerPartie() {
         System.out.println("\n=== FIN DE L'AVENTURE ===");

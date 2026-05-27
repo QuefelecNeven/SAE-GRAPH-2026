@@ -2,6 +2,7 @@ Sauvegarde$ArcData.class
 GestionSauvegarde.class
 Enigme.class
 Debut.class
+Algorithme$NoeudBFS.class
 Algorithme$NoeudDijkstra.class
 Sauvegarde.class
 Sauvegarde$PageData.class
