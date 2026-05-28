@@ -130,10 +130,6 @@ public class Algorithme {
         return meilleurTemps;
     }
 
-    // ---------------------------------------------------------------
-    // BFS : trouve le chemin le plus court en nombre de pages
-    // en ramassant TOUS les objets avant d'atteindre la Fin
-    // ---------------------------------------------------------------
 
     private int nbPagesVisitees = 0;
     private double tempsBFS = -1.0;
@@ -141,15 +137,12 @@ public class Algorithme {
     public List<Page> executerBFS() {
         Page pDeb = livre.getDebut();
 
-        // Compter le total d'objets à ramasser
         int totalObjets = 0;
         for (Page p : graphe.vertexSet()) {
             if (p.contientObjet()) totalObjets++;
         }
 
-        // Chaque entrée de la file contient : [chemin, objetsRecuperes]
-        // On réutilise NoeudDijkstra mais avec tempsCumule = nb de pages (non utilisé ici)
-        // On crée une file de paires chemin + objets trouvés
+
         Queue<NoeudBFS> file = new LinkedList<>();
         Set<Etat> vus = new HashSet<>();
 
@@ -168,9 +161,8 @@ public class Algorithme {
             Page pageCourante = courant.etat.page;
             nbPagesVisitees++;
 
-            // Condition d'arrivée : on est à la Fin ET tous les objets sont ramassés
             if (pageCourante instanceof Fin && courant.etat.objetsRecuperes.size() == totalObjets) {
-                // Calculer le temps total du chemin trouvé
+
                 tempsBFS = 0.0;
                 List<Page> c = courant.chemin;
                 for (int i = 0; i < c.size() - 1; i++) {
@@ -180,11 +172,9 @@ public class Algorithme {
                 return courant.chemin;
             }
 
-            // Explorer les voisins
             for (DefaultWeightedEdge arc : graphe.outgoingEdgesOf(pageCourante)) {
                 Page voisin = graphe.getEdgeTarget(arc);
 
-                // Copier les objets courants et ramasser celui du voisin si besoin
                 Set<Integer> nouveauxObjets = new HashSet<>(courant.etat.objetsRecuperes);
                 if (voisin.contientObjet()) {
                     nouveauxObjets.add(voisin.getNumP());
@@ -192,7 +182,6 @@ public class Algorithme {
 
                 Etat nouvelEtat = new Etat(voisin, nouveauxObjets);
 
-                // Ne pas revisiter le même état (même page + mêmes objets)
                 if (!vus.contains(nouvelEtat)) {
                     vus.add(nouvelEtat);
                     List<Page> nouveauChemin = new ArrayList<>(courant.chemin);
@@ -202,11 +191,9 @@ public class Algorithme {
             }
         }
 
-        // Aucun chemin trouvé avec tous les objets
         return new ArrayList<>();
     }
 
-    // Classe interne simple pour le BFS
     private class NoeudBFS {
         Etat etat;
         List<Page> chemin;

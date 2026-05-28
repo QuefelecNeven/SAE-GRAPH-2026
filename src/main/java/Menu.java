@@ -23,9 +23,8 @@ public class Menu {
         this.scanner = new Scanner(System.in);
     }
 
-
     public void afficherMenuPrincipal() {
-        System.out.println("\n=== INITIALISATION DE L'AVENTURE ===");
+        System.out.println("\n INITIALISATION DE L'AVENTURE ");
         System.out.println("  1. Créer une nouvelle partie (Nouveau graphe)");
         System.out.println("  2. Charger un fichier de sauvegarde");
         System.out.print("Votre choix : ");
@@ -36,7 +35,7 @@ public class Menu {
             try {
                 choixInit = Integer.parseInt(entree);
                 if (choixInit < 1 || choixInit > 2) {
-                    System.out.print("Choix invalide, saisissez 1 ou 2 : ");
+                    System.out.print("Choix invalide, saisissez une bonne réponse : ");
                 }
             } catch (NumberFormatException e) {
                 System.out.print("Veuillez entrer un nombre valide (1 ou 2) : ");
@@ -52,7 +51,7 @@ public class Menu {
 
         int choix = -1;
         while (choix != 7) {
-            System.out.println("\n=== MENU PRINCIPAL ===");
+            System.out.println("\n MENU PRINCIPAL ");
             System.out.println("  1. Jouer (Mode Humain)");
             System.out.println("  2. Jouer (Mode Algorithme)");
             System.out.println("  3. Exporter le graphe en .dot / PDF");
@@ -83,10 +82,8 @@ public class Menu {
         }
     }
 
-
     private void creerNouvellePartie() {
-        // --- Nombre de pages ---
-        System.out.println("\n=== CONFIGURATION DU LIVRE ===");
+        System.out.println("\n CONFIGURATION DU LIVRE ");
         System.out.print("Nombre de pages du livre (minimum 5) : ");
         int nbPages = 0;
         while (nbPages < 5) {
@@ -101,9 +98,9 @@ public class Menu {
             }
         }
 
-        System.out.println("Combien d'objets voulez-vous placer dans le livre ? (0 pour aucun) ");
+        System.out.println("Combien d'objets voulez-vous placer dans le livre ?");
         int nbObjets = -1;
-        while (nbObjets < 0) {
+        while (nbObjets <= 0) {
             String entree = scanner.next();
             try {
                 nbObjets = Integer.parseInt(entree);
@@ -141,15 +138,20 @@ public class Menu {
             }
         }
 
+        long debut = System.nanoTime();
         this.livre = new Livre(nbPages, pagesObjets);
+        long fin = System.nanoTime();
+        double dureeMs = (fin - debut) / 1_000_000.0;
+
         this.pageCourante = livre.getDebut();
         this.inventaire = new ArrayList<>();
 
         System.out.println("Livre créé avec " + nbPages + " pages et " + pagesObjets.size() + " objet(s) : " + pagesObjets);
+        System.out.println("Durée de création du graphe : " + dureeMs + " ms");
     }
 
     private void choisirTypeGraphe() {
-        System.out.println("\n=== TYPE DE GRAPHE ===");
+        System.out.println("\n TYPE DE GRAPHE");
         System.out.println("  1. Graphe Simple (chemin garanti passant par les objets)");
         System.out.println("  2. Graphe Aléatoire (avec garantie d'atteignabilité)");
         System.out.print("Votre choix : ");
@@ -164,17 +166,22 @@ public class Menu {
         }
 
         if (choix == 1) {
+            long debut = System.nanoTime();
             livre.utiliserGrapheSimple();
+            long fin = System.nanoTime();
             System.out.println("Graphe Simple sélectionné.");
+            System.out.println("Durée de création du graphe : " + (fin - debut) / 1_000_000.0 + " ms");
         } else {
+            long debut = System.nanoTime();
             livre.utiliserGrapheAleatoire();
+            long fin = System.nanoTime();
             System.out.println("Graphe Aléatoire sélectionné.");
+            System.out.println("Durée de création du graphe : " + (fin - debut) / 1_000_000.0 + " ms");
         }
     }
 
-
     public void jouerHumain() {
-        System.out.println("\n=== DÉBUT DE L'AVENTURE (Mode Humain) ===");
+        System.out.println("\n DÉBUT DE L'AVENTURE (Mode Humain)");
         while (!(pageCourante instanceof Fin)) {
             afficherEtat();
 
@@ -226,10 +233,8 @@ public class Menu {
         }
     }
 
-
-
     private void sauvegarderPartieDossier() {
-        System.out.print("Entrez le nom personnalisé pour votre sauvegarde (sans extension) : ");
+        System.out.print("Entrez le nom personnalisé pour votre sauvegarde : ");
         String nomFichier = scanner.next();
 
         File dossier = new File("save");
@@ -266,9 +271,8 @@ public class Menu {
         }
     }
 
-
     public void jouerIA() {
-        System.out.println("\n=== MODE ALGORITHME ===");
+        System.out.println("\n MODE ALGORITHME");
         System.out.println("  1. Dijkstra (chemin le plus rapide en temps, collecte tous les objets)");
         System.out.println("  2. BFS (chemin le plus court en nombre de pages jusqu'à la Fin)");
         System.out.print("Votre choix : ");
@@ -286,7 +290,11 @@ public class Menu {
 
         if (choix == 1) {
             System.out.println("\n>> Lancement de Dijkstra...");
+            long debut = System.nanoTime();
             List<Page> chemin = algo.executer();
+            long fin = System.nanoTime();
+            double dureeMs = (fin - debut) / 1_000_000.0;
+
             if (chemin.isEmpty()) {
                 System.out.println("Aucun chemin trouvé collectant tous les objets jusqu'à la Fin.");
             } else {
@@ -295,11 +303,16 @@ public class Menu {
                     System.out.print("Page " + p.getNumP() + " ");
                 }
                 System.out.println();
-                System.out.println("Temps total : " + algo.getMeilleurTemps() + "s");
+                System.out.println("Temps total du chemin  : " + algo.getMeilleurTemps() + "s");
+                System.out.println("Durée d'exécution      : " + dureeMs + " ms");
             }
         } else {
             System.out.println("\n>> Lancement du BFS...");
+            long debut = System.nanoTime();
             List<Page> chemin = algo.executerBFS();
+            long fin = System.nanoTime();
+            double dureeMs = (fin - debut) / 1_000_000.0;
+
             if (chemin.isEmpty()) {
                 System.out.println("Aucun chemin trouvé jusqu'à la page Fin.");
             } else {
@@ -308,8 +321,9 @@ public class Menu {
                     System.out.print("Page " + p.getNumP() + " ");
                 }
                 System.out.println();
-                System.out.println("Temps total : " + algo.getTempsBFS() + "s");
+                System.out.println("Temps total du chemin  : " + algo.getTempsBFS() + "s");
                 System.out.println("Nombre de pages visitées pendant la recherche : " + algo.getNbPagesVisitees());
+                System.out.println("Durée d'exécution      : " + dureeMs + " ms");
             }
         }
     }
@@ -372,7 +386,6 @@ public class Menu {
         }
     }
 
-
     private void afficherEtat() {
         System.out.println("\n--- Page " + pageCourante.getNumP() + " ---");
 
@@ -391,9 +404,8 @@ public class Menu {
         }
     }
 
-
     private void terminerPartie() {
-        System.out.println("\n=== FIN DE L'AVENTURE ===");
+        System.out.println("\n FIN DE L'AVENTURE");
         System.out.println("Vous avez atteint la page finale : " + pageCourante.getNumP());
         System.out.println("Objets récoltés (" + inventaire.size() + ") :");
         if (inventaire.isEmpty()) {
