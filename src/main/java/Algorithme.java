@@ -247,10 +247,6 @@ public class Algorithme {
     private int nbPagesVisiteesDijkstra = 0;
 =======
 
-    // ---------------------------------------------------------------
-    // BFS : trouve le chemin le plus court en nombre de pages
-    // en ramassant TOUS les objets avant d'atteindre la Fin
-    // ---------------------------------------------------------------
 
     private int nbPagesVisitees = 0;
     private double tempsBFS = -1.0;
@@ -260,14 +256,18 @@ public class Algorithme {
         Page pDeb = livre.getDebut();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         // Compter le total d'objets à ramasser
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
         int totalObjets = 0;
         for (Page p : graphe.vertexSet()) {
             if (p.contientObjet()) totalObjets++;
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -275,6 +275,9 @@ public class Algorithme {
         // On réutilise NoeudDijkstra mais avec tempsCumule = nb de pages (non utilisé ici)
         // On crée une file de paires chemin + objets trouvés
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+
+>>>>>>> ec84cfc (Ajout temps exec)
         Queue<NoeudBFS> file = new LinkedList<>();
         Set<Etat> vus = new HashSet<>();
 
@@ -298,6 +301,7 @@ public class Algorithme {
             nbPagesVisitees++;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (pageCourante instanceof Fin && courant.etat.objetsRecuperes.size() == totalObjets) {
 
 =======
@@ -305,6 +309,10 @@ public class Algorithme {
             if (pageCourante instanceof Fin && courant.etat.objetsRecuperes.size() == totalObjets) {
                 // Calculer le temps total du chemin trouvé
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+            if (pageCourante instanceof Fin && courant.etat.objetsRecuperes.size() == totalObjets) {
+
+>>>>>>> ec84cfc (Ajout temps exec)
                 tempsBFS = 0.0;
                 List<Page> c = courant.chemin;
                 for (int i = 0; i < c.size() - 1; i++) {
@@ -314,6 +322,7 @@ public class Algorithme {
                 return courant.chemin;
             }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             for (DefaultWeightedEdge arc : graphe.outgoingEdgesOf(pageCourante)) {
                 Page voisin = graphe.getEdgeTarget(arc);
@@ -325,6 +334,11 @@ public class Algorithme {
 
                 // Copier les objets courants et ramasser celui du voisin si besoin
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+            for (DefaultWeightedEdge arc : graphe.outgoingEdgesOf(pageCourante)) {
+                Page voisin = graphe.getEdgeTarget(arc);
+
+>>>>>>> ec84cfc (Ajout temps exec)
                 Set<Integer> nouveauxObjets = new HashSet<>(courant.etat.objetsRecuperes);
                 if (voisin.contientObjet()) {
                     nouveauxObjets.add(voisin.getNumP());
@@ -333,9 +347,12 @@ public class Algorithme {
                 Etat nouvelEtat = new Etat(voisin, nouveauxObjets);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                 // Ne pas revisiter le même état (même page + mêmes objets)
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
                 if (!vus.contains(nouvelEtat)) {
                     vus.add(nouvelEtat);
                     List<Page> nouveauChemin = new ArrayList<>(courant.chemin);
@@ -345,6 +362,7 @@ public class Algorithme {
             }
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             nbPagesVisiteesDijkstra++;
         return new ArrayList<>();
@@ -357,6 +375,11 @@ public class Algorithme {
 
     // Classe interne simple pour le BFS
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+        return new ArrayList<>();
+    }
+
+>>>>>>> ec84cfc (Ajout temps exec)
     private class NoeudBFS {
         Etat etat;
         List<Page> chemin;

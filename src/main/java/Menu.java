@@ -24,12 +24,16 @@ public class Menu {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
     public void afficherMenuPrincipal() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+    public void afficherMenuPrincipal() {
+>>>>>>> ec84cfc (Ajout temps exec)
         System.out.println("\n INITIALISATION DE L'AVENTURE ");
         System.out.println("  1. Créer une nouvelle partie (Nouveau graphe)");
         System.out.println("  2. Charger un fichier de sauvegarde");
@@ -53,10 +57,14 @@ public class Menu {
                 choixInit = Integer.parseInt(entree);
                 if (choixInit < 1 || choixInit > 2) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     System.out.print("Choix invalide, saisissez une bonne réponse : ");
 =======
                     System.out.print("Choix invalide, saisissez 1 ou 2 : ");
 >>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
+=======
+                    System.out.print("Choix invalide, saisissez une bonne réponse : ");
+>>>>>>> ec84cfc (Ajout temps exec)
                 }
             } catch (NumberFormatException e) {
                 System.out.print("Veuillez entrer un nombre valide (1 ou 2) : ");
@@ -87,8 +95,12 @@ public class Menu {
 >>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
         int choix = -1;
         while (choix != 7) {
+<<<<<<< HEAD
             System.out.println("\n=== MENU PRINCIPAL ===");
 >>>>>>> d2714cb (Fin)
+=======
+            System.out.println("\n MENU PRINCIPAL ");
+>>>>>>> ec84cfc (Ajout temps exec)
             System.out.println("  1. Jouer (Mode Humain)");
             System.out.println("  2. Jouer (Mode Algorithme)");
             System.out.println("  3. Exporter le graphe en .dot / PDF");
@@ -161,6 +173,7 @@ public class Menu {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private void creerNouvellePartie() {
         System.out.println("\n CONFIGURATION DU LIVRE ");
 =======
@@ -169,6 +182,10 @@ public class Menu {
         // --- Nombre de pages ---
         System.out.println("\n=== CONFIGURATION DU LIVRE ===");
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+    private void creerNouvellePartie() {
+        System.out.println("\n CONFIGURATION DU LIVRE ");
+>>>>>>> ec84cfc (Ajout temps exec)
         System.out.print("Nombre de pages du livre (minimum 5) : ");
         int nbPages = 0;
         while (nbPages < 5) {
@@ -184,6 +201,7 @@ public class Menu {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         System.out.println("Combien d'objets voulez-vous placer dans le livre ?");
         int nbObjets = -1;
         while (nbObjets <= 0) {
@@ -192,6 +210,11 @@ public class Menu {
         int nbObjets = -1;
         while (nbObjets < 0) {
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+        System.out.println("Combien d'objets voulez-vous placer dans le livre ?");
+        int nbObjets = -1;
+        while (nbObjets <= 0) {
+>>>>>>> ec84cfc (Ajout temps exec)
             String entree = scanner.next();
             try {
                 nbObjets = Integer.parseInt(entree);
@@ -230,24 +253,34 @@ public class Menu {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
         long debut = System.nanoTime();
         this.livre = new Livre(nbPages, pagesObjets);
         long fin = System.nanoTime();
         double dureeMs = (fin - debut) / 1_000_000.0;
 
+<<<<<<< HEAD
 =======
         this.livre = new Livre(nbPages, pagesObjets);
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
         this.pageCourante = livre.getDebut();
         this.inventaire = new ArrayList<>();
 
         System.out.println("Livre créé avec " + nbPages + " pages et " + pagesObjets.size() + " objet(s) : " + pagesObjets);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
         System.out.println("Durée de création du graphe : " + dureeMs + " ms");
     }
 
     private void choisirTypeGraphe() {
         System.out.println("\n TYPE DE GRAPHE");
+<<<<<<< HEAD
 =======
 =======
     }
@@ -256,6 +289,8 @@ public class Menu {
     private void choisirTypeGraphe() {
         System.out.println("\n=== TYPE DE GRAPHE ===");
 >>>>>>> d2714cb (Fin)
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
         System.out.println("  1. Graphe Simple (chemin garanti passant par les objets)");
         System.out.println("  2. Graphe Aléatoire (avec garantie d'atteignabilité)");
         System.out.print("Votre choix : ");
@@ -288,6 +323,7 @@ public class Menu {
 
         if (choix == 1) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             long debut = System.nanoTime();
             livre.utiliserGrapheSimple();
             long fin = System.nanoTime();
@@ -302,14 +338,23 @@ public class Menu {
         }
     }
 =======
+=======
+            long debut = System.nanoTime();
+>>>>>>> ec84cfc (Ajout temps exec)
             livre.utiliserGrapheSimple();
+            long fin = System.nanoTime();
             System.out.println("Graphe Simple sélectionné.");
+            System.out.println("Durée de création du graphe : " + (fin - debut) / 1_000_000.0 + " ms");
         } else {
+            long debut = System.nanoTime();
             livre.utiliserGrapheAleatoire();
+            long fin = System.nanoTime();
             System.out.println("Graphe Aléatoire sélectionné.");
+            System.out.println("Durée de création du graphe : " + (fin - debut) / 1_000_000.0 + " ms");
         }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // ------------------------------------------------------------------
     // Mode humain
@@ -318,6 +363,8 @@ public class Menu {
 =======
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
 
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
     public void jouerHumain() {
         System.out.println("\n DÉBUT DE L'AVENTURE (Mode Humain)");
         while (!(pageCourante instanceof Fin)) {
@@ -404,10 +451,8 @@ public class Menu {
         }
     }
 
-
-
     private void sauvegarderPartieDossier() {
-        System.out.print("Entrez le nom personnalisé pour votre sauvegarde (sans extension) : ");
+        System.out.print("Entrez le nom personnalisé pour votre sauvegarde : ");
         String nomFichier = scanner.next();
 
         File dossier = new File("save");
@@ -449,6 +494,7 @@ public class Menu {
         }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     private void sauvegarderPartieDossier() {
         System.out.print("Entrez le nom personnalisé pour votre sauvegarde : ");
@@ -496,8 +542,10 @@ public class Menu {
 
 =======
 
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
     public void jouerIA() {
-        System.out.println("\n=== MODE ALGORITHME ===");
+        System.out.println("\n MODE ALGORITHME");
         System.out.println("  1. Dijkstra (chemin le plus rapide en temps, collecte tous les objets)");
         System.out.println("  2. BFS (chemin le plus court en nombre de pages jusqu'à la Fin)");
         System.out.print("Votre choix : ");
@@ -517,14 +565,20 @@ public class Menu {
         if (choix == 1) {
             System.out.println("\n>> Lancement de Dijkstra...");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
             long debut = System.nanoTime();
             List<Page> chemin = algo.executer();
             long fin = System.nanoTime();
             double dureeMs = (fin - debut) / 1_000_000.0;
 
+<<<<<<< HEAD
 =======
             List<Page> chemin = algo.executer();
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
             if (chemin.isEmpty()) {
                 System.out.println("Aucun chemin trouvé collectant tous les objets jusqu'à la Fin.");
             } else {
@@ -533,6 +587,7 @@ public class Menu {
                     System.out.print("Page " + p.getNumP() + " ");
                 }
                 System.out.println();
+<<<<<<< HEAD
 <<<<<<< HEAD
                 System.out.println("Temps total du chemin  : " + algo.getMeilleurTemps() + "s");
                 System.out.println("Durée d'exécution      : " + dureeMs + " ms");
@@ -547,11 +602,22 @@ public class Menu {
 
 =======
                 System.out.println("Temps total : " + algo.getMeilleurTemps() + "s");
+=======
+                System.out.println("Temps total du chemin  : " + algo.getMeilleurTemps() + "s");
+                System.out.println("Durée d'exécution      : " + dureeMs + " ms");
+>>>>>>> ec84cfc (Ajout temps exec)
             }
         } else {
             System.out.println("\n>> Lancement du BFS...");
+            long debut = System.nanoTime();
             List<Page> chemin = algo.executerBFS();
+<<<<<<< HEAD
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+            long fin = System.nanoTime();
+            double dureeMs = (fin - debut) / 1_000_000.0;
+
+>>>>>>> ec84cfc (Ajout temps exec)
             if (chemin.isEmpty()) {
                 System.out.println("Aucun chemin trouvé jusqu'à la page Fin.");
             } else {
@@ -561,6 +627,7 @@ public class Menu {
                 }
                 System.out.println();
 <<<<<<< HEAD
+<<<<<<< HEAD
                 System.out.println("Temps total du chemin  : " + algo.getTempsBFS() + "s");
                 System.out.println("Nombre de pages visitées pendant la recherche : " + algo.getNbPagesVisitees());
                 System.out.println("Durée d'exécution      : " + dureeMs + " ms");
@@ -568,6 +635,11 @@ public class Menu {
                 System.out.println("Temps total : " + algo.getTempsBFS() + "s");
                 System.out.println("Nombre de pages visitées pendant la recherche : " + algo.getNbPagesVisitees());
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+                System.out.println("Temps total du chemin  : " + algo.getTempsBFS() + "s");
+                System.out.println("Nombre de pages visitées pendant la recherche : " + algo.getNbPagesVisitees());
+                System.out.println("Durée d'exécution      : " + dureeMs + " ms");
+>>>>>>> ec84cfc (Ajout temps exec)
             }
         }
     }
@@ -657,9 +729,12 @@ public class Menu {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
     private void afficherEtat() {
         System.out.println("\n--- Page " + pageCourante.getNumP() + " ---");
 
@@ -688,8 +763,11 @@ public class Menu {
         }
     }
 
+<<<<<<< HEAD
 
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+>>>>>>> ec84cfc (Ajout temps exec)
     private void terminerPartie() {
         System.out.println("\n FIN DE L'AVENTURE");
         System.out.println("Vous avez atteint la page finale : " + pageCourante.getNumP());
