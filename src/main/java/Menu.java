@@ -305,6 +305,7 @@ public class Menu {
                 System.out.println();
                 System.out.println("Temps total du chemin  : " + algo.getMeilleurTemps() + "s");
                 System.out.println("Durée d'exécution      : " + dureeMs + " ms");
+                System.out.println("Nombre de pages visitées pendant la recherche : " + algo.getNbPagesVisiteesDijkstra());
             }
         } else {
             System.out.println("\n>> Lancement du BFS...");

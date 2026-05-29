@@ -133,6 +133,7 @@ public class Algorithme {
 
     private int nbPagesVisitees = 0;
     private double tempsBFS = -1.0;
+    private int nbPagesVisiteesDijkstra = 0;
 
     public List<Page> executerBFS() {
         Page pDeb = livre.getDebut();
@@ -157,6 +158,7 @@ public class Algorithme {
         vus.add(etatInitial);
 
         while (!file.isEmpty()) {
+        nbPagesVisiteesDijkstra = 0;
             NoeudBFS courant = file.poll();
             Page pageCourante = courant.etat.page;
             nbPagesVisitees++;
@@ -191,6 +193,7 @@ public class Algorithme {
             }
         }
 
+            nbPagesVisiteesDijkstra++;
         return new ArrayList<>();
     }
 
@@ -210,5 +213,9 @@ public class Algorithme {
 
     public double getTempsBFS() {
         return tempsBFS;
+    }
+
+    public int getNbPagesVisiteesDijkstra() {
+        return nbPagesVisiteesDijkstra;
     }
 }
