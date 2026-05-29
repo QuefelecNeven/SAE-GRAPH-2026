@@ -245,12 +245,15 @@ public class Algorithme {
     private int nbPagesVisitees = 0;
     private double tempsBFS = -1.0;
     private int nbPagesVisiteesDijkstra = 0;
+<<<<<<< HEAD
 =======
 
 
     private int nbPagesVisitees = 0;
     private double tempsBFS = -1.0;
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+>>>>>>> 4084bf9 (Commit)
 
     public List<Page> executerBFS() {
         Page pDeb = livre.getDebut();
@@ -293,9 +296,13 @@ public class Algorithme {
 
         while (!file.isEmpty()) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         nbPagesVisiteesDijkstra = 0;
 =======
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+        nbPagesVisiteesDijkstra = 0;
+>>>>>>> 4084bf9 (Commit)
             NoeudBFS courant = file.poll();
             Page pageCourante = courant.etat.page;
             nbPagesVisitees++;
@@ -364,6 +371,9 @@ public class Algorithme {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4084bf9 (Commit)
             nbPagesVisiteesDijkstra++;
         return new ArrayList<>();
     }
@@ -398,12 +408,18 @@ public class Algorithme {
         return tempsBFS;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4084bf9 (Commit)
 
     public int getNbPagesVisiteesDijkstra() {
         return nbPagesVisiteesDijkstra;
     }
+<<<<<<< HEAD
 =======
 >>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
 =======
 >>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
+=======
+>>>>>>> 4084bf9 (Commit)
 }
