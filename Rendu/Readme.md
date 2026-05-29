@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+# **Projet Bruiqu'IUT'O**
+## **SAE Java 2026**
+
+
+>>>>>>> 4efd5e7 (avantures de fichiers. dernier comits avant relect)
 Ce projet est développé par :
 
 * **MAUME Timothy**

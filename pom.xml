@@ -36,9 +36,12 @@
       <version>1.5.2</version>
     </dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
+=======
+>>>>>>> 4efd5e7 (avantures de fichiers. dernier comits avant relect)
     <dependency>
       <groupId>org.jgrapht</groupId>
       <artifactId>jgrapht-io</artifactId>
