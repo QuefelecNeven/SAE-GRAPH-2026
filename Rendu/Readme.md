@@ -1,7 +1,3 @@
-# **Projet Bruiqu'IUT'O**
-## **SAE Java 2026**
-
-
 Ce projet est développé par :
 
 * **MAUME Timothy**
