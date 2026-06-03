@@ -81,7 +81,6 @@ public class Livre {
             }
         }
 
-        // Chemin principal : pDeb → pages avec objets → pFin
         Page anciennePage = pDeb;
         for (Page pageObjet : pageAvecObjet) {
             DefaultWeightedEdge arc = g.addEdge(anciennePage, pageObjet);
@@ -91,7 +90,6 @@ public class Livre {
         DefaultWeightedEdge arcFinal = g.addEdge(anciennePage, pFin);
         g.setEdgeWeight(arcFinal, pFin.getTempsResolution());
 
-        // Arcs aléatoires supplémentaires (2 à 3 par sommet)
         List<Page> toutesPages = new ArrayList<>(pages);
         toutesPages.add(pDeb);
         toutesPages.add(pFin);
