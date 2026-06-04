@@ -245,7 +245,7 @@ public class Livre {
             } else {
                 p = new Page(pd.id);
                 if (pd.textEnigme != null) {
-                    p.setEnigme(new Enigme(pd.textEnigme, pd.tempResolution)); // Nécessite d'ajouter ce constructeur dans Enigme.java
+                    p.setEnigme(new Enigme(pd.textEnigme, pd.tempResolution)); 
                 }
             }
             if (pd.obj != null) {
