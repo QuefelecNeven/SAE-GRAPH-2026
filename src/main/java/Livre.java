@@ -190,6 +190,7 @@ public class Livre {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         //ajoute les liaison random
 =======
         // Arcs aléatoires (2 à 3 par sommet)
@@ -197,6 +198,9 @@ public class Livre {
 =======
 
 >>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
+=======
+        //ajoute les liaison random
+>>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
         for (Page page : toutesPages) {
             int nbArcs = 2 + random.nextInt(2);
             List<Page> cibles = new ArrayList<>(toutesPages);
@@ -214,6 +218,7 @@ public class Livre {
             }
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         //verif toujours connexe
 =======
 
@@ -222,6 +227,9 @@ public class Livre {
 >>>>>>> d2714cb (Fin)
 =======
 >>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
+=======
+        //verif toujours connexe
+>>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
         for (Page page : toutesPages) {
             if (!estAtteignable(g, pDeb, page)) {
                 Page source = trouverPageAtteignable(g, pDeb, toutesPages, random);
@@ -232,6 +240,7 @@ public class Livre {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         //verif que la fin est atteignable
 =======
         // Garantir que pFin est atteignable depuis chaque page
@@ -239,6 +248,9 @@ public class Livre {
 =======
 
 >>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
+=======
+        //verif que la fin est atteignable
+>>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
         for (Page page : toutesPages) {
             if (!estAtteignable(g, page, pFin)) {
                 DefaultWeightedEdge arc = g.addEdge(page, pFin);
@@ -248,6 +260,7 @@ public class Livre {
 
         return g;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     // permet de savoir si il existe un chemin depuis le sommet source au sommets cible donné en parametre sur un graph donné lui aussi
 =======
@@ -260,6 +273,9 @@ public class Livre {
 >>>>>>> d2714cb (Fin)
 =======
 >>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
+=======
+    // permet de savoir si il existe un chemin depuis le sommet source au sommets cible donné en parametre sur un graph donné lui aussi
+>>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
     private boolean estAtteignable(Graph<Page, DefaultWeightedEdge> g, Page source, Page cible) {
         if (source.equals(cible)) return true;
         Set<Page> visites = new HashSet<>();
@@ -351,6 +367,7 @@ public class Livre {
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     
      //Reconstruit intégralement le graphe à partir du fichier de sauvegarde
      
@@ -359,6 +376,11 @@ public class Livre {
      * Reconstruit intégralement le graphe JGraphT à partir du fichier de sauvegarde
      */
 >>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
+=======
+    
+     //Reconstruit intégralement le graphe à partir du fichier de sauvegarde
+     
+>>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
     public void chargerDepuisSauvegarde(Sauvegarde save) {
         this.nbpage = save.nbPages;
         this.pages = new ArrayList<>();
@@ -403,9 +425,12 @@ public class Livre {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     public Page getPageById(int id) {
         return pages.stream().filter(p -> p.getNumP() == id).findFirst().orElse(null);
     }
 >>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
+=======
+>>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
 }
