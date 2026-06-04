@@ -117,7 +117,7 @@ public class Livre {
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheAleatoire() {
         Graph<Page, DefaultWeightedEdge> g =
                 new DefaultDirectedWeightedGraph<>(DefaultWeightedEdge.class);
-
+        //ajoute les pages dans le graph
         Random random = new Random();
         List<Page> toutesPages = new ArrayList<>(pages);
         toutesPages.add(0, pDeb);
@@ -127,7 +127,7 @@ public class Livre {
             g.addVertex(page);
         }
 
-
+        //ajoute les liaison random
         for (Page page : toutesPages) {
             int nbArcs = 2 + random.nextInt(2);
             List<Page> cibles = new ArrayList<>(toutesPages);
@@ -144,7 +144,7 @@ public class Livre {
                 }
             }
         }
-
+        //verif toujours connexe
         for (Page page : toutesPages) {
             if (!estAtteignable(g, pDeb, page)) {
                 Page source = trouverPageAtteignable(g, pDeb, toutesPages, random);
@@ -153,7 +153,7 @@ public class Livre {
             }
         }
 
-
+        //verif que la fin est atteignable
         for (Page page : toutesPages) {
             if (!estAtteignable(g, page, pFin)) {
                 DefaultWeightedEdge arc = g.addEdge(page, pFin);
@@ -163,7 +163,7 @@ public class Livre {
 
         return g;
     }
-
+    // permet de savoir si il existe un chemin depuis le sommet source au sommets cible donné en parametre sur un graph donné lui aussi
     private boolean estAtteignable(Graph<Page, DefaultWeightedEdge> g, Page source, Page cible) {
         if (source.equals(cible)) return true;
         Set<Page> visites = new HashSet<>();
@@ -180,7 +180,7 @@ public class Livre {
         }
         return false;
     }
-
+    // verifie pour toutes les pages si il existe un chemin entre la page de debut et la pget donnée en parametre
     private Page trouverPageAtteignable(Graph<Page, DefaultWeightedEdge> g, Page pDeb,
                                         List<Page> toutesPages, Random random) {
         List<Page> atteignables = new ArrayList<>();
@@ -224,9 +224,9 @@ public class Livre {
         }
     }
     
-    /**
-     * Reconstruit intégralement le graphe JGraphT à partir du fichier de sauvegarde
-     */
+    
+     //Reconstruit intégralement le graphe à partir du fichier de sauvegarde
+     
     public void chargerDepuisSauvegarde(Sauvegarde save) {
         this.nbpage = save.nbPages;
         this.pages = new ArrayList<>();
@@ -266,7 +266,4 @@ public class Livre {
         }
     }
 
-    public Page getPageById(int id) {
-        return pages.stream().filter(p -> p.getNumP() == id).findFirst().orElse(null);
-    }
 }
