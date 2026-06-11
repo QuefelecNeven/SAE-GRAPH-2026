@@ -1,5 +1,6 @@
 public class Executable {
     public static void main(String[] args) {
-        // CA développer
+        Menu menu = new Menu();
+        menu.afficherMenuPrincipal();
     }
 }

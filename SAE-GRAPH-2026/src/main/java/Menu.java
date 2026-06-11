@@ -23,48 +23,19 @@ public class Menu {
         this.scanner = new Scanner(System.in);
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
     public void afficherMenuPrincipal() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    public void afficherMenuPrincipal() {
->>>>>>> ec84cfc (Ajout temps exec)
         System.out.println("\n INITIALISATION DE L'AVENTURE ");
         System.out.println("  1. Créer une nouvelle partie (Nouveau graphe)");
         System.out.println("  2. Charger un fichier de sauvegarde");
         System.out.print("Votre choix : ");
 
-=======
-        System.out.println("\n=== INITIALISATION DE L'AVENTURE ===");
-        System.out.println("  1. Créer une nouvelle partie (Nouveau graphe)");
-        System.out.println("  2. Charger un fichier de sauvegarde");
-        System.out.print("Votre choix : ");
-<<<<<<< HEAD
-        
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-=======
-
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
         int choixInit = -1;
         while (choixInit < 1 || choixInit > 2) {
             String entree = scanner.next();
             try {
                 choixInit = Integer.parseInt(entree);
                 if (choixInit < 1 || choixInit > 2) {
-<<<<<<< HEAD
-<<<<<<< HEAD
                     System.out.print("Choix invalide, saisissez une bonne réponse : ");
-=======
-                    System.out.print("Choix invalide, saisissez 1 ou 2 : ");
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-=======
-                    System.out.print("Choix invalide, saisissez une bonne réponse : ");
->>>>>>> ec84cfc (Ajout temps exec)
                 }
             } catch (NumberFormatException e) {
                 System.out.print("Veuillez entrer un nombre valide (1 ou 2) : ");
@@ -72,41 +43,19 @@ public class Menu {
         }
 
         if (choixInit == 1) {
-<<<<<<< HEAD
-<<<<<<< HEAD
             creerNouvellePartie();
-=======
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-=======
-            creerNouvellePartie();
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
             choisirTypeGraphe();
         } else {
             chargerPartieDossier();
         }
 
-<<<<<<< HEAD
         int choix = -1;
         while (choix != 7) {
             System.out.println("\n MENU PRINCIPAL ");
-=======
-        choisirTypeGraphe();
-=======
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-        int choix = -1;
-        while (choix != 7) {
-<<<<<<< HEAD
-            System.out.println("\n=== MENU PRINCIPAL ===");
->>>>>>> d2714cb (Fin)
-=======
-            System.out.println("\n MENU PRINCIPAL ");
->>>>>>> ec84cfc (Ajout temps exec)
             System.out.println("  1. Jouer (Mode Humain)");
             System.out.println("  2. Jouer (Mode Algorithme)");
             System.out.println("  3. Exporter le graphe en .dot / PDF");
             System.out.println("  4. Changer le type de graphe");
-<<<<<<< HEAD
-<<<<<<< HEAD
             System.out.println("  5. Sauvegarder la partie");
             System.out.println("  6. Charger une sauvegarde");
             System.out.println("  7. Quitter");
@@ -118,34 +67,6 @@ public class Menu {
                 try {
                     choix = Integer.parseInt(entree);
                 } catch (NumberFormatException e) {
-=======
-            System.out.println("  5. Quitter");
-            System.out.print("Votre choix : ");
-
-            choix = -1;
-            while (choix < 1 || choix > 5) {
-                if (scanner.hasNextInt()) {
-                    choix = scanner.nextInt();
-                } else {
-                    scanner.next();
->>>>>>> d2714cb (Fin)
-=======
-            System.out.println("  5. Sauvegarder la partie");
-            System.out.println("  6. Charger une sauvegarde");
-            System.out.println("  7. Quitter");
-            System.out.print("Votre choix : ");
-
-            choix = -1;
-            while (choix < 1 || choix > 7) {
-                String entree = scanner.next();
-                try {
-                    choix = Integer.parseInt(entree);
-                } catch (NumberFormatException e) {
-<<<<<<< HEAD
-                    // Ignorer les entrées incorrectes et reboucler
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-=======
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
                 }
             }
 
@@ -154,38 +75,15 @@ public class Menu {
                 case 2 -> jouerIA();
                 case 3 -> exporterGraphe();
                 case 4 -> choisirTypeGraphe();
-<<<<<<< HEAD
-<<<<<<< HEAD
                 case 5 -> sauvegarderPartieDossier();
                 case 6 -> chargerPartieDossier();
                 case 7 -> System.out.println("Au revoir !");
-=======
-                case 5 -> System.out.println("Au revoir !");
->>>>>>> d2714cb (Fin)
-=======
-                case 5 -> sauvegarderPartieDossier();
-                case 6 -> chargerPartieDossier();
-                case 7 -> System.out.println("Au revoir !");
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
             }
         }
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     private void creerNouvellePartie() {
         System.out.println("\n CONFIGURATION DU LIVRE ");
-=======
-
-    private void creerNouvellePartie() {
-        // --- Nombre de pages ---
-        System.out.println("\n=== CONFIGURATION DU LIVRE ===");
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-=======
-    private void creerNouvellePartie() {
-        System.out.println("\n CONFIGURATION DU LIVRE ");
->>>>>>> ec84cfc (Ajout temps exec)
         System.out.print("Nombre de pages du livre (minimum 5) : ");
         int nbPages = 0;
         while (nbPages < 5) {
@@ -200,21 +98,9 @@ public class Menu {
             }
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         System.out.println("Combien d'objets voulez-vous placer dans le livre ?");
         int nbObjets = -1;
         while (nbObjets <= 0) {
-=======
-        System.out.println("Combien d'objets voulez-vous placer dans le livre ? (0 pour aucun) ");
-        int nbObjets = -1;
-        while (nbObjets < 0) {
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-=======
-        System.out.println("Combien d'objets voulez-vous placer dans le livre ?");
-        int nbObjets = -1;
-        while (nbObjets <= 0) {
->>>>>>> ec84cfc (Ajout temps exec)
             String entree = scanner.next();
             try {
                 nbObjets = Integer.parseInt(entree);
@@ -252,78 +138,34 @@ public class Menu {
             }
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ec84cfc (Ajout temps exec)
         long debut = System.nanoTime();
         this.livre = new Livre(nbPages, pagesObjets);
         long fin = System.nanoTime();
         double dureeMs = (fin - debut) / 1_000_000.0;
 
-<<<<<<< HEAD
-=======
-        this.livre = new Livre(nbPages, pagesObjets);
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-=======
->>>>>>> ec84cfc (Ajout temps exec)
         this.pageCourante = livre.getDebut();
         this.inventaire = new ArrayList<>();
 
         System.out.println("Livre créé avec " + nbPages + " pages et " + pagesObjets.size() + " objet(s) : " + pagesObjets);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ec84cfc (Ajout temps exec)
         System.out.println("Durée de création du graphe : " + dureeMs + " ms");
     }
 
     private void choisirTypeGraphe() {
         System.out.println("\n TYPE DE GRAPHE");
-<<<<<<< HEAD
-=======
-=======
-    }
-
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-    private void choisirTypeGraphe() {
-        System.out.println("\n=== TYPE DE GRAPHE ===");
->>>>>>> d2714cb (Fin)
-=======
->>>>>>> ec84cfc (Ajout temps exec)
         System.out.println("  1. Graphe Simple (chemin garanti passant par les objets)");
         System.out.println("  2. Graphe Aléatoire (avec garantie d'atteignabilité)");
         System.out.print("Votre choix : ");
 
         int choix = -1;
         while (choix < 1 || choix > 2) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
             String entree = scanner.next();
             try {
                 choix = Integer.parseInt(entree);
             } catch (NumberFormatException e) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-            if (scanner.hasNextInt()) {
-                choix = scanner.nextInt();
-            } else {
-                scanner.next();
->>>>>>> d2714cb (Fin)
-=======
-                // Réessayer silencieusement
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-=======
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
             }
         }
 
         if (choix == 1) {
-<<<<<<< HEAD
-<<<<<<< HEAD
             long debut = System.nanoTime();
             livre.utiliserGrapheSimple();
             long fin = System.nanoTime();
@@ -337,34 +179,7 @@ public class Menu {
             System.out.println("Durée de création du graphe : " + (fin - debut) / 1_000_000.0 + " ms");
         }
     }
-=======
-=======
-            long debut = System.nanoTime();
->>>>>>> ec84cfc (Ajout temps exec)
-            livre.utiliserGrapheSimple();
-            long fin = System.nanoTime();
-            System.out.println("Graphe Simple sélectionné.");
-            System.out.println("Durée de création du graphe : " + (fin - debut) / 1_000_000.0 + " ms");
-        } else {
-            long debut = System.nanoTime();
-            livre.utiliserGrapheAleatoire();
-            long fin = System.nanoTime();
-            System.out.println("Graphe Aléatoire sélectionné.");
-            System.out.println("Durée de création du graphe : " + (fin - debut) / 1_000_000.0 + " ms");
-        }
-    }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // ------------------------------------------------------------------
-    // Mode humain
-    // ------------------------------------------------------------------
->>>>>>> d2714cb (Fin)
-=======
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-
-=======
->>>>>>> ec84cfc (Ajout temps exec)
     public void jouerHumain() {
         System.out.println("\n DÉBUT DE L'AVENTURE (Mode Humain)");
         while (!(pageCourante instanceof Fin)) {
@@ -388,13 +203,6 @@ public class Menu {
 
             int index = lireChoixOuSauvegarde(choix.size());
             if (index == -2) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-                // L'utilisateur a sauvegardé sa partie à la volée, on rafraîchit la page actuelle
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-=======
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
                 continue;
             }
             pageCourante = choix.get(index);
@@ -402,40 +210,16 @@ public class Menu {
         terminerPartie();
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    /** Lit le choix de destination ou intercepte la commande de sauvegarde instantanée. */
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-=======
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
     private int lireChoixOuSauvegarde(int max) {
         while (true) {
             System.out.print("Votre choix (1-" + max + ") ou écrivez 'save' pour sauvegarder : ");
             String entree = scanner.next();
-<<<<<<< HEAD
-<<<<<<< HEAD
 
             if (entree.equalsIgnoreCase("save")) {
                 sauvegarderPartieDossier();
                 return -2;
             }
 
-=======
-            
-=======
-
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-            if (entree.equalsIgnoreCase("save")) {
-                sauvegarderPartieDossier();
-                return -2;
-            }
-<<<<<<< HEAD
-            
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-=======
-
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
             try {
                 int index = Integer.parseInt(entree) - 1;
                 if (index >= 0 && index < max) {
@@ -445,57 +229,10 @@ public class Menu {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Entrée non reconnue. Saisissez un nombre ou tapez 'save'.");
-<<<<<<< HEAD
-=======
             }
         }
     }
 
-    private void sauvegarderPartieDossier() {
-        System.out.print("Entrez le nom personnalisé pour votre sauvegarde : ");
-        String nomFichier = scanner.next();
-
-        File dossier = new File("save");
-        if (!dossier.exists()) {
-            dossier.mkdir();
-        }
-
-        String chemin = "save/" + nomFichier + ".json";
-        GestionSauvegarde.sauvegarder(chemin, livre, pageCourante, inventaire);
-        System.out.println("Partie enregistrée avec succès sous : " + chemin);
-    }
-
-    private void chargerPartieDossier() {
-        System.out.print("Entrez le nom du fichier à charger depuis le dossier 'save' (sans extension) : ");
-        String nomFichier = scanner.next();
-        String chemin = "save/" + nomFichier + ".json";
-
-        Sauvegarde save = GestionSauvegarde.charger(chemin);
-        if (save != null) {
-            if (this.livre == null) {
-                this.livre = new Livre(save.nbPages, new ArrayList<>());
-            }
-            this.livre.chargerDepuisSauvegarde(save);
-            this.pageCourante = this.livre.getPageById(save.pageCouranteId);
-            this.inventaire = save.inventaire != null ? save.inventaire : new ArrayList<>();
-            System.out.println("Sauvegarde restaurée ! Vous reprenez à la page : " + pageCourante.getNumP());
-        } else {
-            System.out.println("Impossible de trouver ou charger le fichier '" + chemin + "'.");
-            if (this.livre == null) {
-                System.out.println("Initialisation forcée d'une nouvelle configuration...");
-                creerNouvellePartie();
-                choisirTypeGraphe();
-<<<<<<< HEAD
-                this.pageCourante = livre.getDebut();
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-=======
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-            }
-        }
-    }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
     private void sauvegarderPartieDossier() {
         System.out.print("Entrez le nom personnalisé pour votre sauvegarde : ");
         String nomFichier = scanner.next();
@@ -540,17 +277,6 @@ public class Menu {
         System.out.println("  2. BFS (chemin le plus court en nombre de pages jusqu'à la Fin)");
         System.out.print("Votre choix : ");
 
-=======
-
-=======
->>>>>>> ec84cfc (Ajout temps exec)
-    public void jouerIA() {
-        System.out.println("\n MODE ALGORITHME");
-        System.out.println("  1. Dijkstra (chemin le plus rapide en temps, collecte tous les objets)");
-        System.out.println("  2. BFS (chemin le plus court en nombre de pages jusqu'à la Fin)");
-        System.out.print("Votre choix : ");
-
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
         int choix = -1;
         while (choix < 1 || choix > 2) {
             String entree = scanner.next();
@@ -564,21 +290,11 @@ public class Menu {
 
         if (choix == 1) {
             System.out.println("\n>> Lancement de Dijkstra...");
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ec84cfc (Ajout temps exec)
             long debut = System.nanoTime();
             List<Page> chemin = algo.executer();
             long fin = System.nanoTime();
             double dureeMs = (fin - debut) / 1_000_000.0;
 
-<<<<<<< HEAD
-=======
-            List<Page> chemin = algo.executer();
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-=======
->>>>>>> ec84cfc (Ajout temps exec)
             if (chemin.isEmpty()) {
                 System.out.println("Aucun chemin trouvé collectant tous les objets jusqu'à la Fin.");
             } else {
@@ -587,8 +303,6 @@ public class Menu {
                     System.out.print("Page " + p.getNumP() + " ");
                 }
                 System.out.println();
-<<<<<<< HEAD
-<<<<<<< HEAD
                 System.out.println("Temps total du chemin  : " + algo.getMeilleurTemps() + "s");
                 System.out.println("Durée d'exécution      : " + dureeMs + " ms");
                 System.out.println("Nombre de pages visitées pendant la recherche : " + algo.getNbPagesVisiteesDijkstra());
@@ -600,24 +314,6 @@ public class Menu {
             long fin = System.nanoTime();
             double dureeMs = (fin - debut) / 1_000_000.0;
 
-=======
-                System.out.println("Temps total : " + algo.getMeilleurTemps() + "s");
-=======
-                System.out.println("Temps total du chemin  : " + algo.getMeilleurTemps() + "s");
-                System.out.println("Durée d'exécution      : " + dureeMs + " ms");
->>>>>>> ec84cfc (Ajout temps exec)
-            }
-        } else {
-            System.out.println("\n>> Lancement du BFS...");
-            long debut = System.nanoTime();
-            List<Page> chemin = algo.executerBFS();
-<<<<<<< HEAD
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-=======
-            long fin = System.nanoTime();
-            double dureeMs = (fin - debut) / 1_000_000.0;
-
->>>>>>> ec84cfc (Ajout temps exec)
             if (chemin.isEmpty()) {
                 System.out.println("Aucun chemin trouvé jusqu'à la page Fin.");
             } else {
@@ -626,20 +322,9 @@ public class Menu {
                     System.out.print("Page " + p.getNumP() + " ");
                 }
                 System.out.println();
-<<<<<<< HEAD
-<<<<<<< HEAD
                 System.out.println("Temps total du chemin  : " + algo.getTempsBFS() + "s");
                 System.out.println("Nombre de pages visitées pendant la recherche : " + algo.getNbPagesVisitees());
                 System.out.println("Durée d'exécution      : " + dureeMs + " ms");
-=======
-                System.out.println("Temps total : " + algo.getTempsBFS() + "s");
-                System.out.println("Nombre de pages visitées pendant la recherche : " + algo.getNbPagesVisitees());
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-=======
-                System.out.println("Temps total du chemin  : " + algo.getTempsBFS() + "s");
-                System.out.println("Nombre de pages visitées pendant la recherche : " + algo.getNbPagesVisitees());
-                System.out.println("Durée d'exécution      : " + dureeMs + " ms");
->>>>>>> ec84cfc (Ajout temps exec)
             }
         }
     }
@@ -680,33 +365,7 @@ public class Menu {
         } catch (IOException e) {
             System.out.println("Erreur lors de l'export : " + e.getMessage());
             return;
-<<<<<<< HEAD
-=======
         }
-
-        try {
-            Process process = new ProcessBuilder("dot", "-T", "pdf", nomFichier, "-o", "graph.pdf")
-                .inheritIO()
-                .start();
-            int code = process.waitFor();
-            if (code == 0) {
-                System.out.println("PDF généré : graph.pdf");
-            } else {
-                System.out.println("Erreur lors de la génération du PDF (code " + code + ").");
-                System.out.println("Vérifiez que graphviz est installé : sudo apt install graphviz");
-            }
-        } catch (IOException e) {
-            System.out.println("Impossible de lancer 'dot' : " + e.getMessage());
-            System.out.println("Installez graphviz : sudo apt install graphviz");
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            System.out.println("Génération interrompue.");
->>>>>>> d2714cb (Fin)
-        }
-<<<<<<< HEAD
-=======
-    }
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
 
         try {
             Process process = new ProcessBuilder("dot", "-T", "pdf", nomFichier, "-o", "graph.pdf")
@@ -728,13 +387,6 @@ public class Menu {
         }
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-=======
->>>>>>> ec84cfc (Ajout temps exec)
     private void afficherEtat() {
         System.out.println("\n--- Page " + pageCourante.getNumP() + " ---");
 
@@ -749,25 +401,10 @@ public class Menu {
             Item obj = pageCourante.getObj();
             System.out.println("Vous avez récupéré un objet : " + obj.getNom());
             inventaire.add(obj);
-<<<<<<< HEAD
-<<<<<<< HEAD
-            pageCourante.setObj(null);
-=======
-            pageCourante.setObj(null); // Consomme l'objet pour éviter la duplication post-sauvegarde
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-        }
-    }
-
-=======
             pageCourante.setObj(null);
         }
     }
 
-<<<<<<< HEAD
-
->>>>>>> dda5d0e (tous est bon et ca J'AIME BIEN)
-=======
->>>>>>> ec84cfc (Ajout temps exec)
     private void terminerPartie() {
         System.out.println("\n FIN DE L'AVENTURE");
         System.out.println("Vous avez atteint la page finale : " + pageCourante.getNumP());

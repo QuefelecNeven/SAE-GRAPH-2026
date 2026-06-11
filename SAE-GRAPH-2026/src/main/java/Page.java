@@ -35,13 +35,6 @@ public class Page {
 
     public void setObj(Item obj) {
         this.obj = obj;
-<<<<<<< HEAD
-    }
-
-    public boolean contientObjet(){
-        return obj != null;
-=======
->>>>>>> d2714cb (Fin)
     }
 
     public boolean contientObjet(){
@@ -52,17 +45,8 @@ public class Page {
         if(this.enigme == null) return 0;
         return this.enigme.getTempRes();
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
     
     public void setEnigme(Enigme enigme) {
         this.enigme = enigme;
     }
-<<<<<<< HEAD
-=======
->>>>>>> d2714cb (Fin)
-=======
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
 }

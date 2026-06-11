@@ -1,10 +1,6 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-<<<<<<< HEAD
 import java.io.File; 
-=======
-import java.io.File; // <-- N'oublie pas cet import
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -22,10 +18,6 @@ public class GestionSauvegarde {
         save.pages = new ArrayList<>();
         save.arcs = new ArrayList<>();
 
-<<<<<<< HEAD
-=======
-        // 1. Récupération de tous les sommets du graphe
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
         for (Page p : livre.getGraphe().vertexSet()) {
             Sauvegarde.PageData pd = new Sauvegarde.PageData();
             pd.id = p.getNumP();
@@ -44,10 +36,6 @@ public class GestionSauvegarde {
             save.pages.add(pd);
         }
 
-<<<<<<< HEAD
-=======
-        // 2. Récupération de tous les arcs et de leurs poids
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
         for (var arc : livre.getGraphe().edgeSet()) {
             Sauvegarde.ArcData ad = new Sauvegarde.ArcData();
             ad.sourceId = livre.getGraphe().getEdgeSource(arc).getNumP();
@@ -56,23 +44,12 @@ public class GestionSauvegarde {
             save.arcs.add(ad);
         }
 
-<<<<<<< HEAD
         File file = new File(fichier);
         File dossierParent = file.getParentFile();
         if (dossierParent != null && !dossierParent.exists()) {
             dossierParent.mkdirs();
         }
 
-=======
-        // 🔥 SÉCURITÉ EN PLUS : Création automatique du dossier "save" s'il manque
-        File file = new File(fichier);
-        File dossierParent = file.getParentFile();
-        if (dossierParent != null && !dossierParent.exists()) {
-            dossierParent.mkdirs(); // Crée le dossier 'save/' automatiquement à la racine du projet
-        }
-
-        // Écriture du fichier JSON
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
         try (FileWriter writer = new FileWriter(file)) {
             GSON.toJson(save, writer);
         } catch (IOException e) {

@@ -18,8 +18,6 @@ public class Livre {
     private Graph<Page, DefaultWeightedEdge> graphe;
     private Set<Item> items;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     public Livre(int nbpage, List<Integer> l) {
         this.nbpage = nbpage;
         this.pDeb = new Debut(0);
@@ -35,49 +33,9 @@ public class Livre {
     }
 
     public void utiliserGrapheAleatoire() {
-=======
-=======
->>>>>>> d2714cb (Fin)
-
-    public Livre(int nbpage, int pDeb, int pFin,List<Integer> l) {
-=======
-    public Livre(int nbpage, List<Integer> l) {
->>>>>>> 556f834 (Fin)
-        this.nbpage = nbpage;
-        this.pDeb = new Debut(0);
-        this.pFin = new Fin(nbpage);
-        this.pages = new ArrayList<>();
-<<<<<<< HEAD
-        fill(); 
-        items = poserObj(l);
-<<<<<<< HEAD
->>>>>>> 56cd319 (poser objet fait et fill modifié)
         this.graphe = initialiserGrapheAleatoire();
     }
 
-=======
-=======
-        this.items = poserObj(l);
-        remplirLesPages();
-        this.graphe = initialiserGrapheAleatoire(); 
-    }
-
-    public void utiliserGrapheSimple() {
-        this.graphe = initialiserGrapheSimple();
-    }
-
-    public void utiliserGrapheAleatoire() {
->>>>>>> 556f834 (Fin)
-        this.graphe = initialiserGrapheAleatoire();
-    }
-
-<<<<<<< HEAD
-    // ------------------------------------------------------------------
-    // Accesseurs
-    // ------------------------------------------------------------------
->>>>>>> d2714cb (Fin)
-=======
->>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
 
     public Page getDebut() {
         return pDeb;
@@ -92,12 +50,6 @@ public class Livre {
         for (DefaultWeightedEdge arc : graphe.outgoingEdgesOf(p)) {
             suivantes.add(graphe.getEdgeTarget(arc));
         }
-<<<<<<< HEAD
-        for(Item obj : items){
-            this.pages.get(obj.getPosO()).addobj(obj);
-        }
-        return it;
-=======
         return suivantes;
     }
 
@@ -111,12 +63,7 @@ public class Livre {
         for (int i = 0; i < l.size(); i++) {
             it.add(new Item(l.get(i)));
         }
-<<<<<<< HEAD
-        return it; // return manquant dans l'original
->>>>>>> 556f834 (Fin)
-=======
         return it; 
->>>>>>> eb16fcd (Algorithme Djikstra implémenter a ajouter dans le menu)
     }
 
     private Graph<Page, DefaultWeightedEdge> initialiserGrapheSimple() {
@@ -134,10 +81,6 @@ public class Livre {
             }
         }
 
-<<<<<<< HEAD
-=======
-        // Chemin principal : pDeb → pages avec objets → pFin
->>>>>>> d2714cb (Fin)
         Page anciennePage = pDeb;
         for (Page pageObjet : pageAvecObjet) {
             DefaultWeightedEdge arc = g.addEdge(anciennePage, pageObjet);
@@ -147,10 +90,6 @@ public class Livre {
         DefaultWeightedEdge arcFinal = g.addEdge(anciennePage, pFin);
         g.setEdgeWeight(arcFinal, pFin.getTempsResolution());
 
-<<<<<<< HEAD
-=======
-        // Arcs aléatoires supplémentaires (2 à 3 par sommet)
->>>>>>> d2714cb (Fin)
         List<Page> toutesPages = new ArrayList<>(pages);
         toutesPages.add(pDeb);
         toutesPages.add(pFin);
@@ -188,19 +127,7 @@ public class Livre {
             g.addVertex(page);
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         //ajoute les liaison random
-=======
-        // Arcs aléatoires (2 à 3 par sommet)
->>>>>>> d2714cb (Fin)
-=======
-
->>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
-=======
-        //ajoute les liaison random
->>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
         for (Page page : toutesPages) {
             int nbArcs = 2 + random.nextInt(2);
             List<Page> cibles = new ArrayList<>(toutesPages);
@@ -217,19 +144,7 @@ public class Livre {
                 }
             }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
         //verif toujours connexe
-=======
-
-<<<<<<< HEAD
-        // Garantir que chaque page est atteignable depuis pDeb
->>>>>>> d2714cb (Fin)
-=======
->>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
-=======
-        //verif toujours connexe
->>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
         for (Page page : toutesPages) {
             if (!estAtteignable(g, pDeb, page)) {
                 Page source = trouverPageAtteignable(g, pDeb, toutesPages, random);
@@ -238,19 +153,7 @@ public class Livre {
             }
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         //verif que la fin est atteignable
-=======
-        // Garantir que pFin est atteignable depuis chaque page
->>>>>>> d2714cb (Fin)
-=======
-
->>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
-=======
-        //verif que la fin est atteignable
->>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
         for (Page page : toutesPages) {
             if (!estAtteignable(g, page, pFin)) {
                 DefaultWeightedEdge arc = g.addEdge(page, pFin);
@@ -260,22 +163,7 @@ public class Livre {
 
         return g;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
     // permet de savoir si il existe un chemin depuis le sommet source au sommets cible donné en parametre sur un graph donné lui aussi
-=======
-
-<<<<<<< HEAD
-    // ------------------------------------------------------------------
-    // Utilitaires graphe
-    // ------------------------------------------------------------------
-
->>>>>>> d2714cb (Fin)
-=======
->>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
-=======
-    // permet de savoir si il existe un chemin depuis le sommet source au sommets cible donné en parametre sur un graph donné lui aussi
->>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
     private boolean estAtteignable(Graph<Page, DefaultWeightedEdge> g, Page source, Page cible) {
         if (source.equals(cible)) return true;
         Set<Page> visites = new HashSet<>();
@@ -304,15 +192,6 @@ public class Livre {
         return atteignables.get(random.nextInt(atteignables.size()));
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    // ------------------------------------------------------------------
-    // Initialisation des pages
-    // ------------------------------------------------------------------
->>>>>>> d2714cb (Fin)
-=======
->>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
 
     private void initEnigmes() {
         if (enigmes.isEmpty()) {
@@ -329,27 +208,12 @@ public class Livre {
 
     private void remplirLesPages() {
         initEnigmes();
-<<<<<<< HEAD
-        for(int i = 1; i < nbpage-1; i++)
-            this.pages.add(createPage(i));
-<<<<<<< HEAD
-<<<<<<< HEAD
-        }
-        this.pages.add(pFin);
-
-=======
-=======
         this.pages.add(pDeb);
         for (int i = 1; i < nbpage - 1; i++) {
             this.pages.add(createPage(i));
         }
         this.pages.add(pFin);
 
-<<<<<<< HEAD
-        // Assigner chaque item à la page correspondante
->>>>>>> d2714cb (Fin)
-=======
->>>>>>> 104af6c (Algorithme Djikstra implémenter a ajouter dans le menu)
         for (Item item : items) {
             for (Page page : pages) {
                 if (page.getNumP() == item.getPosO()) {
@@ -358,29 +222,11 @@ public class Livre {
                 }
             }
         }
-<<<<<<< HEAD
-=======
->>>>>>> 56cd319 (poser objet fait et fill modifié)
-=======
->>>>>>> 556f834 (Fin)
->>>>>>> d2714cb (Fin)
     }
     
-<<<<<<< HEAD
-<<<<<<< HEAD
     
      //Reconstruit intégralement le graphe à partir du fichier de sauvegarde
      
-=======
-    /**
-     * Reconstruit intégralement le graphe JGraphT à partir du fichier de sauvegarde
-     */
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-=======
-    
-     //Reconstruit intégralement le graphe à partir du fichier de sauvegarde
-     
->>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
     public void chargerDepuisSauvegarde(Sauvegarde save) {
         this.nbpage = save.nbPages;
         this.pages = new ArrayList<>();
@@ -399,11 +245,7 @@ public class Livre {
             } else {
                 p = new Page(pd.id);
                 if (pd.textEnigme != null) {
-<<<<<<< HEAD
                     p.setEnigme(new Enigme(pd.textEnigme, pd.tempResolution)); 
-=======
-                    p.setEnigme(new Enigme(pd.textEnigme, pd.tempResolution)); // Nécessite d'ajouter ce constructeur dans Enigme.java
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
                 }
             }
             if (pd.obj != null) {
@@ -424,13 +266,13 @@ public class Livre {
         }
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    public Page getPageById(int id) {
-        return pages.stream().filter(p -> p.getNumP() == id).findFirst().orElse(null);
+    private Page getPageById(int id) {
+        for (Page p : pages) {
+            if (p.getNumP() == id) {
+                return p;
+            }
+        }
+        return null;
     }
->>>>>>> 0b932ba (avantures de fichiers. dernier comits avant relect)
-=======
->>>>>>> 6e51087 (commentaire ajouté pour les fonctions)
+
 }
